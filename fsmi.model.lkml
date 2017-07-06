@@ -19,3 +19,12 @@ explore: look_loan_src_codes {}
 explore: look_sav_non_isa_account {}
 
 explore: ro_calendar {}
+
+
+explore: app_source {
+from: look_loan_application
+join: look_loan_src_codes {
+  type: left_outer
+  relationship: many_to_one
+  sql_on: look_loan_application.source_code = look_loan_src_codes.source_code;;
+  }}
