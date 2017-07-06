@@ -26,5 +26,5 @@ from: look_loan_application
 join: look_loan_src_codes {
   type: left_outer
   relationship: many_to_one
-  sql_on: look_loan_application.source_code = look_loan_src_codes.source_code;;
+  sql_on: ${app_source.source_code} = ${look_loan_src_codes.source_code};;
   }}
