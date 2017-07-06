@@ -1,5 +1,5 @@
 connection: "pchaa03"
-week_start_day: monday
+week_start_day: tuesday
 
 # include all the views
 include: "*.view"
