@@ -27,4 +27,6 @@ join: look_loan_src_codes {
   type: left_outer
   relationship: many_to_one
   sql_on: ${app_source.source_code} = ${look_loan_src_codes.source_code};;
-  }}
+  }
+fields: [app_source.source_code, app_source.application_date, app_source.application_decision, app_source.count, look_loan_src_codes.source_group, look_loan_src_codes.channel_source]
+}
