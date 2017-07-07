@@ -1,6 +1,6 @@
 view:  app_source
 {
-  sql_table_name: app_source ;;
+  sql_table_name: look_loan_application;;
   dimension: source_code
   {sql: ${TABLE}.source_code;;}
 
@@ -72,11 +72,11 @@ view:  app_source
 
   dimension: src_group
   {type: string
-    sql: coalesce(${TABLE}.source_group, SEO&Direct);;}
+    sql: coalesce(${look_loan_src_codes.source_group}, 'SEO&Direct');;}
 
   dimension: channel_src
   {type: string
-    sql: coalesce(${TABLE}.channel_source, SEO&Direct);;}
+    sql: coalesce(${look_loan_src_codes.channel_source}, 'SEO&Direct');;}
 
   measure: count
   {sql: ${TABLE}.count;;}

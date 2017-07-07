@@ -13,18 +13,15 @@ explore: loans_app_mth_v {}
 
 explore: loans_flat_file {}
 
-explore: look_loan_application {}
-
 explore: look_loan_src_codes {}
 
 explore: look_sav_non_isa_account {}
 
 explore: ro_calendar {}
 
+explore: look_loan_application {}
 
-explore: app_source
-{
-  from: look_loan_application
+explore: app_source {
   join: look_loan_src_codes
   {
     type: left_outer
