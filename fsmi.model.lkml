@@ -22,18 +22,6 @@ explore: look_sav_non_isa_account {}
 explore: ro_calendar {}
 
 
-explore: app_source
-{
-  from: look_loan_application
-  join: look_loan_src_codes
-  {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${app_source.source_code} = ${look_loan_src_codes.source_code};;
-  }
-}
-
-
 view:  app_source
 {
   dimension: source_code
@@ -124,4 +112,16 @@ view:  app_source
   {type: number
     sql: sum(${TABLE}.weighted_loan_term_final)/sum(${TABLE}.loan_amount_agreed);;}
 
+}
+
+
+explore: app_source
+{
+  from: look_loan_application
+  join: look_loan_src_codes
+  {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${app_source.source_code} = ${look_loan_src_codes.source_code};;
+  }
 }
