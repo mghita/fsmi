@@ -24,6 +24,7 @@ explore: ro_calendar {}
 
 view:  app_source
 {
+  sql_table_name: app_source ;;
   dimension: source_code
   {sql: ${TABLE}.source_code;;}
 
