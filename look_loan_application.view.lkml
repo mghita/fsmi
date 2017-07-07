@@ -348,8 +348,8 @@ view: look_loan_application {
     sql: ${TABLE}.WEIGHTED_LOAN_TERM_FINAL ;;
   }
 
-  measure: count {
+  measure: counts {
     type: count
-    drill_fields: [product_name, campaign_product_name, campaign_name]
+    drill_fields: []
   }
 }

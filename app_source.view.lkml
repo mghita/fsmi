@@ -1,17 +1,21 @@
 view:  app_source
 {
-  sql_table_name: look_loan_application;;
+  sql_table_name: BOIFS.LOOK_LOAN_APPLICATION ;;
   dimension: source_code
-  {sql: ${TABLE}.source_code;;}
+  {type: string
+  sql:${TABLE}.source_code;;}
 
   dimension: loan_purpose
-  {sql: ${TABLE}.loan_purpose;;}
+  {type: string
+  sql: ${TABLE}.loanpurpose;;}
 
   dimension: product_name
-  {sql: ${TABLE}.product_name;;}
+  {type: string
+  sql:${TABLE}.product_name;;}
 
   dimension: loan_amount_applied
-  {sql: ${TABLE}.loan_amount_applied;;}
+  {type: number
+  sql: ${TABLE}.loan_amount_applied;;}
 
   dimension: loan_amount_applied_band
   {type:tier
@@ -20,7 +24,8 @@ view:  app_source
       style:interval;;}
 
   dimension: loan_term_application
-  {sql: ${TABLE}.loan_term_application;;}
+  {type: number
+  sql: ${TABLE}.loan_term_application;;}
 
   dimension: loan_term_application_band
   {type:tier
@@ -55,14 +60,12 @@ view:  app_source
     sql:loan_APR
       style:interval;;}
 
-  dimension: application_date
-  {sql: ${TABLE}.application_date;;}
-
-  dimension: application_month
-  {sql: ${TABLE}.application_month;;}
-
-  dimension: application_week
-  {sql: ${TABLE}.application_week;;}
+  dimension_group: application {
+    type: time
+    timeframes: [date, week, month]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATION_DATE ;;
+  }
 
   dimension: application_decision
   {sql: ${TABLE}.application_decision;;}
@@ -78,8 +81,10 @@ view:  app_source
   {type: string
     sql: coalesce(${look_loan_src_codes.channel_source}, 'SEO&Direct');;}
 
-  measure: count
-  {sql: ${TABLE}.count;;}
+  measure: counts {
+    type: count
+    drill_fields: []
+  }
 
   measure: avg_APR
   {type: number
