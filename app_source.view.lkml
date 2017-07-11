@@ -100,6 +100,34 @@ view:  app_source
     drill_fields: []
   }
 
+  measure: count_accepted_apps {
+    type: count
+    filters: {field:application_decision value: "%Accept%"}
+  }
+
+  measure: count_taken_up_apps {
+    type: count
+    filters: {field:final_decision value: "%Taken Up%"}
+  }
+
+  measure: pct_accept_of_all_apps {
+    type: number
+    sql: 100.0*${count_accepted_apps}/${counts}
+    value_format: '0.00\%'
+  }
+
+  measure: pct_takenup_of_all_apps {
+    type: number
+    sql: 100.0*${count_taken_up_apps}/${counts}
+    value_format: '0.00\%'
+  }
+
+    measure: pct_takenup_of_accepted_apps {
+    type: number
+    sql: 100.0*${count_taken_up_apps}/${count_accepted_apps}
+    value_format: '0.00\%'
+  }
+
   measure: avg_APR
   {type: number
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;}
