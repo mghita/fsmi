@@ -67,6 +67,20 @@ view:  app_source
     sql: ${TABLE}.APPLICATION_DATE ;;
   }
 
+  dimension_group: application_decision {
+    type: time
+    timeframes: [date, week, month]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATION_DECISION_DATE ;;
+  }
+
+  dimension_group: final_decision {
+    type: time
+    timeframes: [date, week, month]
+    convert_tz: no
+    sql: ${TABLE}.FINAL_DECISION_DATE ;;
+  }
+
   dimension: application_decision
   {sql: ${TABLE}.application_decision;;}
 
