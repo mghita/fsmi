@@ -113,19 +113,19 @@ view:  app_source
   measure: pct_accept_of_all_apps {
     type: number
     sql: 100.0*${count_accepted_apps}/${counts}
-    value_format: '0.00\%'
+    value_format: "0.00\%";;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
     sql: 100.0*${count_taken_up_apps}/${counts}
-    value_format: '0.00\%'
+    value_format: '0.00\%';;
   }
 
-    measure: pct_takenup_of_accepted_apps {
+  measure: pct_takenup_of_accepted_apps {
     type: number
     sql: 100.0*${count_taken_up_apps}/${count_accepted_apps}
-    value_format: '0.00\%'
+    value_format: '0.00\%';;
   }
 
   measure: avg_APR
