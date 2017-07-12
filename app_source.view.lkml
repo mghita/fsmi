@@ -128,6 +128,18 @@ view:  app_source
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
+  measure: avg_amount {
+    type: average
+    value_format: "\"£\"0.00"
+    sql: ${loan_amount_agreed};;
+  }
+
+  measure: total_amount {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${loan_amount_agreed};;
+  }
+
   measure: avg_APR
   {type: number
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;}
