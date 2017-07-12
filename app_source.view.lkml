@@ -107,25 +107,25 @@ view:  app_source
 
   measure: count_taken_up_apps {
     type: count
-    filters: {field:final_decision value: "%Taken Up%"}
+    filters: {field:final_decision value: "Taken Up"}
   }
 
-  measure: pct_accept_of_all_apps {
+  measure: pct_accepted_of_all_apps {
     type: number
-    sql: 100.0*${count_accepted_apps}/${counts}
-    value_format: "0.00\%";;
+    value_format: "0.00\%"
+    sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
-    sql: 100.0*${count_taken_up_apps}/${counts}
-    value_format: '0.00\%';;
+    value_format: "0.00\%"
+    sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_accepted_apps {
     type: number
-    sql: 100.0*${count_taken_up_apps}/${count_accepted_apps}
-    value_format: '0.00\%';;
+    value_format: "0.00\%"
+    sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
   measure: avg_APR
