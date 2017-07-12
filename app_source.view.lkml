@@ -130,7 +130,7 @@ view:  app_source
 
   measure: avg_amount {
     type: average
-    value_format: "\"£\"0.00"
+    value_format: "\"£\"#,##0.0,\" K\""
     sql: ${loan_amount_agreed};;
   }
 
@@ -142,10 +142,12 @@ view:  app_source
 
   measure: avg_APR
   {type: number
+    value_format: "0.0"
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;}
 
   measure: avg_term
   {type: number
+    value_format: "0.0"
     sql: sum(${TABLE}.weighted_loan_term_final)/sum(${TABLE}.loan_amount_agreed);;}
 
 }
