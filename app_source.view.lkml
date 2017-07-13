@@ -48,8 +48,8 @@ view:  app_source
   dimension: loan_term_agreed_band
   {type:tier
     tiers: [12,18,24,30,36,42,48,54,60,66,72,78,84]
-    sql:loan_term_agreed
-      style:interval;;
+    style:interval
+    sql:loan_term_agreed;;
   }
 
   dimension: loan_APR
@@ -57,9 +57,9 @@ view:  app_source
 
   dimension: loan_APR_band
   {type:tier
-    tiers: [5,10,15,20,25,30]
-    sql:loan_APR
-      style:interval;;
+    tiers: [2.5,5,10,12.5,15,20,25,30]
+    style:interval
+    sql:loan_APR;;
   }
 
   dimension_group: application {
