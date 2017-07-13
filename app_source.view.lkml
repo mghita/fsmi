@@ -112,19 +112,19 @@ view:  app_source
 
   measure: pct_accepted_of_all_apps {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.0\%"
     sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.0\%"
     sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_accepted_apps {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.0\%"
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
@@ -140,12 +140,12 @@ view:  app_source
     sql: ${loan_amount_agreed};;
   }
 
-  measure: avg_APR
+  measure: weighted_avg_APR
   {type: number
     value_format: "0.0"
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;}
 
-  measure: avg_term
+  measure: weighted_avg_term
   {type: number
     value_format: "0.0"
     sql: sum(${TABLE}.weighted_loan_term_final)/sum(${TABLE}.loan_amount_agreed);;}
