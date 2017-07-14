@@ -20,8 +20,9 @@ view:  app_source
   dimension: loan_amount_applied_band
   {type:tier
     tiers: [1000,3000,5000,7500,15000,20000,25000]
-    sql:loan_amount_applied
-      style:interval;;}
+    style:interval
+    sql:loan_amount_applied;;
+  }
 
   dimension: loan_term_application
   {type: number
@@ -30,8 +31,9 @@ view:  app_source
   dimension: loan_term_application_band
   {type:tier
     tiers: [12,18,24,30,36,42,48,54,60,66,72,78,84]
-    sql:loan_term_application
-      style:interval;;}
+    style:interval
+    sql:loan_term_application;;
+  }
 
   dimension: loan_amount_agreed
   {sql: ${TABLE}.loan_amount_agreed;;}
@@ -39,8 +41,9 @@ view:  app_source
   dimension: loan_amount_agreed_band
   {type:tier
     tiers: [1000,3000,5000,7500,15000,20000,25000]
-    sql:loan_amount_agreed
-      style:interval;;}
+    style:interval
+    sql:loan_amount_agreed;;
+  }
 
   dimension: loan_term_agreed
   {sql: ${TABLE}.loan_term_agreed;;}
@@ -86,6 +89,23 @@ view:  app_source
   dimension: application_decision
   {sql: ${TABLE}.application_decision;;}
 
+
+  dimension: application_decision_pivot  {
+    sql:
+    case
+    when ${application_decision} = 'Auto Accept' then '1. Auto Accept'
+    when ${application_decision} = 'Refer Accept' then '2. Refer Accept'
+    when ${application_decision} = 'Refer' then '3. Refer'
+    when ${application_decision} = 'Refer Decline' then '4. Refer Decline'
+    when ${application_decision} = 'Auto Decline' then '5. Auto Decline'
+    when ${application_decision} = 'Refer' then '6. Refer'
+    when ${application_decision} = 'Exception' then '7. Exception'
+    when ${application_decision} like '%Application Error%' then  '8. Application Error'
+    else 'Not Available'
+
+    end ;;
+  }
+
   dimension: final_decision
   {sql: ${TABLE}.final_decision;;}
 
@@ -104,49 +124,49 @@ view:  app_source
 
   measure: count_accepted_apps {
     type: count
-    filters: {field:application_decision value: "%Accept%"}
     drill_fields: [src_group, channel_src, count_accepted_apps]
+    filters: {field:application_decision value: "%Accept%"}
   }
 
   measure: count_taken_up_apps {
     type: count
-    filters: {field:final_decision value: "Taken Up"}
     drill_fields: [src_group, channel_src, count_taken_up_apps]
+    filters: {field:final_decision value: "Taken Up"}
   }
 
   measure: pct_accepted_of_all_apps {
     type: number
     value_format: "0.0\%"
-    sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
     drill_fields: [src_group, channel_src, pct_accepted_of_all_apps]
+    sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
     value_format: "0.0\%"
-    sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
     drill_fields: [src_group, channel_src, pct_takenup_of_all_apps]
+    sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_accepted_apps {
     type: number
     value_format: "0.0\%"
-    sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
     drill_fields: [src_group, channel_src, pct_takenup_of_accepted_apps]
+    sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
   measure: avg_amount {
     type: average
     value_format: "\"£\"#,##0.0,\" K\""
-    sql: ${loan_amount_agreed};;
     drill_fields: [src_group, channel_src, avg_amount]
+    sql: ${loan_amount_agreed};;
   }
 
   measure: total_amount {
     type: sum
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${loan_amount_agreed};;
     drill_fields: [src_group, channel_src, total_amount]
+    sql: ${loan_amount_agreed};;
   }
 
   measure: weighted_avg_APR
