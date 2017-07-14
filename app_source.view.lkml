@@ -109,13 +109,13 @@ view:  app_source
   dimension: final_decision
   {sql: ${TABLE}.final_decision;;}
 
-  dimension: src_group
-  {type: string
-    sql: coalesce(${look_loan_src_codes.source_group}, 'SEO&Direct');;}
-
   dimension: channel_src
   {type: string
     sql: coalesce(${look_loan_src_codes.channel_source}, 'SEO&Direct');;}
+
+  dimension: src_group
+  {type: string
+    sql: coalesce(${look_loan_src_codes.source_group}, 'SEO&Direct');;}
 
   measure: counts {
     type: count
