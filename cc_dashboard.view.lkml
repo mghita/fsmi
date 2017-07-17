@@ -106,6 +106,17 @@ view: cc_dashboard {
     sql: ${TABLE}.STATUS_AMENDED_DATE ;;
   }
 
+  dimension: card_applied_for {
+    type: string
+    sql:
+    case when product_sub_type_code  in ('M1 AM1', 'M1 AM2')  then 'Dual'
+      when product_sub_type_code  in ('M1 AL1', 'M1 AL2', 'M1 AL3') then 'Low Rate'
+      when product_sub_type_code  in ('M1 AB1', 'M1 AB2', 'M1 AB3') then 'Balance Transfer'
+      when product_sub_type_code  in ('M1 AR1', 'M1 AR2') then 'FuelSave'
+      else 'Unknown'
+    end;;
+  }
+
   dimension: full_hau {
     type: string
     sql:
