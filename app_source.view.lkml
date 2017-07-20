@@ -67,21 +67,21 @@ view:  app_source
 
   dimension_group: application {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.APPLICATION_DATE ;;
   }
 
   dimension_group: application_decision {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.APPLICATION_DECISION_DATE ;;
   }
 
   dimension_group: final_decision {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.FINAL_DECISION_DATE ;;
   }
@@ -167,6 +167,26 @@ view:  app_source
     value_format:  "\"£\"#,##0,\" K\""
     drill_fields: [src_group, channel_src, total_amount]
     sql: ${loan_amount_agreed};;
+  }
+
+  measure: total_amount_YTD {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    drill_fields: [src_group, channel_src, total_amount_YTD]
+    sql: ${loan_amount_agreed};;
+    filters: {field:final_decision_date value: "this year"
+      field: final_decision_date value: "before this week"
+    }
+  }
+
+  measure: avg_amount_YTD {
+    type: average
+    value_format: "\"£\"#,##0.0,\" K\""
+    drill_fields: [src_group, channel_src, avg_amount_YTD]
+    sql: ${loan_amount_agreed};;
+    filters: {field:final_decision_date value: "this year"
+      field: final_decision_date value: "before this week"
+    }
   }
 
   measure: weighted_avg_APR
