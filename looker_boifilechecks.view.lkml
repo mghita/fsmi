@@ -38,6 +38,14 @@ view: looker_boifilechecks {
     sql: ${TABLE}.COMMENTS ;;
   }
 
+  dimension: comments_updt {
+    type: string
+    sql:
+    case when ${TABLE}.FILECOUNT = 1 then 'File loaded with 0 records'
+      else ${TABLE}.COMMENTS
+    end;;
+  }
+
   set: detail {
     fields: [
       type,
