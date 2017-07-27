@@ -21,9 +21,11 @@ explore: looker_cc_ITO_codes {}
 
 explore: ro_calendar {}
 
-explore: look_loan_application {}
+explore: looker_loan_application {}
 
 explore: looker_fs_monthly_forecasts {}
+
+explore: looker_boifilechecks {}
 
 explore: loans_dashboard{
   join: looker_loan_src_codes

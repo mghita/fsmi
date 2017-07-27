@@ -1,4 +1,4 @@
-view: look_loan_application {
+view: looker_loan_application {
   sql_table_name: BOIFS.LOOKER_LOAN_APPLICATION ;;
 
   dimension: aa_member_flag {
