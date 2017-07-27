@@ -44,8 +44,9 @@ view: looker_boifilechecks {
       filename,
       frequency,
       file_date,
-      filecount,
-      comments
+      comments,
+      count,
+      filecount
     ]
   }
   }
