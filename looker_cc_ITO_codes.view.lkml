@@ -1,5 +1,5 @@
-view: look_cc_ITO_codes {
-  sql_table_name: BOIFS.LOOK_CC_ITO_CODES ;;
+view: looker_cc_ITO_codes {
+  sql_table_name: BOIFS.LOOKER_CC_ITO_CODES ;;
 
   dimension: hau_new  {
     type: string

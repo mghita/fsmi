@@ -1,5 +1,5 @@
-view: look_sav_non_isa_account {
-  sql_table_name: BOIFS.LOOK_SAV_NON_ISA_ACCOUNT ;;
+view: looker_sav_non_isa_account {
+  sql_table_name: BOIFS.LOOKER_SAV_NON_ISA_ACCOUNT ;;
 
   dimension: account_number {
     type: string

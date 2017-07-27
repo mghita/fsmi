@@ -1,5 +1,5 @@
 view: look_loan_application {
-  sql_table_name: BOIFS.LOOK_LOAN_APPLICATION ;;
+  sql_table_name: BOIFS.LOOKER_LOAN_APPLICATION ;;
 
   dimension: aa_member_flag {
     type: string

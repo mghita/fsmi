@@ -1,6 +1,18 @@
-view:  app_source
+view:  loans_dashboard
 {
-  sql_table_name: BOIFS.LOOK_LOAN_APPLICATION ;;
+  sql_table_name: BOIFS.LOOKER_LOAN_APPLICATION ;;
+  dimension: account_number {
+    type: string
+    sql: ${TABLE}.ACCOUNT_NUMBER ;;
+  }
+
+  dimension: compound_primary_key {
+    primary_key: yes
+    type: string
+    hidden: yes
+    sql: ${TABLE}.APPLICATION_DATE||${TABLE}.ACCOUNT_NUMBER ;;
+  }
+
   dimension: source_code
   {type: string
   sql:${TABLE}.source_code;;}
@@ -111,15 +123,25 @@ view:  app_source
 
   dimension: channel_src
   {type: string
-    sql: coalesce(${look_loan_src_codes.channel_source}, 'SEO&Direct');;}
+    sql: coalesce(${looker_loan_src_codes.channel_source}, 'SEO&Direct');;}
 
   dimension: src_group
   {type: string
-    sql: coalesce(${look_loan_src_codes.source_group}, 'SEO&Direct');;}
+    sql: coalesce(${looker_loan_src_codes.source_group}, 'SEO&Direct');;}
 
   measure: counts {
+    type: count_distinct
+    drill_fields: [src_group, channel_src, counts]
+    sql: ${TABLE}.ACCOUNT_NUMBER ;;
+    sql_distinct_key: ${compound_primary_key};;
+  }
+
+  measure: counts_ytd {
     type: count
     drill_fields: [src_group, channel_src, counts]
+    filters: {field:final_decision_date value: "this year"
+      field: final_decision_week value: "before this week"
+    }
   }
 
   measure: count_accepted_apps {
@@ -129,10 +151,16 @@ view:  app_source
   }
 
   measure: count_taken_up_apps {
-    type: count
+    type: count_distinct
     drill_fields: [src_group, channel_src, count_taken_up_apps]
     filters: {field:final_decision value: "Taken Up"}
-  }
+    sql: ${TABLE}.ACCOUNT_NUMBER ;;
+    sql_distinct_key: ${compound_primary_key};;
+    }
+
+  measure: forecast_count {
+    sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
+    }
 
   measure: pct_accepted_of_all_apps {
     type: number

@@ -1,5 +1,5 @@
 view: cc_dashboard {
-  sql_table_name: BOIFS.LK_CC_APPLICATION ;;
+  sql_table_name: BOIFS.LOOKER_CC_APPLICATION ;;
 
   dimension_group: app_approved {
     type: time
@@ -123,7 +123,7 @@ view: cc_dashboard {
     case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
       when hau_type is null then 'Review HAU'
-      else ${look_cc_ITO_codes.full_hau}
+      else ${looker_cc_ITO_codes.full_hau}
     end;;
   }
 
@@ -133,7 +133,7 @@ view: cc_dashboard {
     case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO & Direct'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
       when hau_type is null then 'Review HAU'
-      else ${look_cc_ITO_codes.hau_type}
+      else ${looker_cc_ITO_codes.hau_type}
     end;;
   }
 
@@ -143,7 +143,7 @@ view: cc_dashboard {
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
       when hau_type is null then 'Review HAU'
-      else ${look_cc_ITO_codes.hau_site}
+      else ${looker_cc_ITO_codes.hau_site}
     end;;
   }
 
@@ -153,7 +153,7 @@ view: cc_dashboard {
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
       when hau_type is null then 'Review HAU'
-      else ${look_cc_ITO_codes.hau_desc}
+      else ${looker_cc_ITO_codes.hau_desc}
     end;;
   }
 

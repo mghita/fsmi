@@ -1,5 +1,5 @@
-view: lk_cc_application {
-  sql_table_name: BOIFS.LK_CC_APPLICATION ;;
+view: looker_cc_application {
+  sql_table_name: BOIFS.LOOKER_CC_APPLICATION ;;
 
   dimension_group: app_approved {
     type: time

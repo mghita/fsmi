@@ -1,5 +1,5 @@
-view: look_loan_src_codes {
-  sql_table_name: BOIFS.LOOK_LOAN_SRC_CODES ;;
+view: looker_loan_src_codes {
+  sql_table_name: BOIFS.LOOKER_LOAN_SRC_CODES ;;
 
   dimension: channel_source {
     type: string
