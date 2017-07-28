@@ -36,7 +36,8 @@ view: looker_boifilechecks {
   measure: filecount {
     type: sum
     sql: ${TABLE}.FILECOUNT ;;
-  }
+    drill_fields: [detail*]
+    }
 
   dimension: comments {
     type: string

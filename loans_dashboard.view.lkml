@@ -32,7 +32,7 @@ view:  loans_dashboard
   dimension: loan_amount_applied_band
   {type:tier
     tiers: [1000,3000,5000,7500,15000,20000,25000]
-    style:interval
+    style:relational
     sql:loan_amount_applied;;
   }
 
@@ -123,11 +123,15 @@ view:  loans_dashboard
 
   dimension: channel_src
   {type: string
-    sql: coalesce(${looker_loan_src_codes.channel_source}, 'SEO&Direct');;}
+    sql: coalesce(${looker_loan_src_codes.channel_source}, 'SEO&Direct');;
+    full_suggestions: yes
+  }
 
   dimension: src_group
   {type: string
-    sql: coalesce(${looker_loan_src_codes.source_group}, 'SEO&Direct');;}
+    sql: coalesce(${looker_loan_src_codes.source_group}, 'SEO&Direct');;
+    full_suggestions: yes
+  }
 
   measure: counts {
     type: count_distinct

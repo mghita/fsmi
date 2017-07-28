@@ -38,7 +38,7 @@ explore: loans_dashboard{
   {
     type: full_outer
     relationship: many_to_one
-    sql_on:  ${loans_dashboard.final_decision_date} = ${looker_fs_monthly_forecasts.forecast_date}
+    sql_on:  ${loans_dashboard.application_date} = ${looker_fs_monthly_forecasts.forecast_date}
         and ${looker_fs_monthly_forecasts.prod_category}='Loan'
     ;;
   }
@@ -51,5 +51,13 @@ explore: cc_dashboard {
     relationship: many_to_one
     sql_on: ${cc_dashboard.hau} = ${looker_cc_ITO_codes.hau_new};;
   }
-
+  join: looker_fs_monthly_forecasts
+  {
+    type: full_outer
+    relationship: many_to_one
+    sql_on:  ${cc_dashboard.application_date} = ${looker_fs_monthly_forecasts.forecast_date}
+        and ${cc_dashboard.card_applied_for} =  ${looker_fs_monthly_forecasts.prod_subcategory}
+        and ${looker_fs_monthly_forecasts.prod_category}='Credit Card'
+    ;;
+  }
 }

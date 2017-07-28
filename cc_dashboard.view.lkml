@@ -27,6 +27,13 @@ view: cc_dashboard {
     sql: ${TABLE}.APPLICATION_NUMBER ;;
   }
 
+  dimension: compound_primary_key {
+    primary_key: yes
+    type: string
+    hidden: yes
+    sql: ${TABLE}.APPLICATION_DATE||${TABLE}.APPLICATION_NUMBER ;;
+  }
+
   dimension: balance_transfer_flag {
     type: string
     sql: ${TABLE}.BALANCE_TRANSFER_FLAG ;;
@@ -158,20 +165,30 @@ view: cc_dashboard {
   }
 
   measure: counts {
-    type: count
+    type: count_distinct
     drill_fields: []
+    sql:  ${TABLE}.APPLICATION_NUMBER;;
+    sql_distinct_key: ${compound_primary_key};;
   }
 
   measure: count_accepted_apps {
-    type: count
+    type: count_distinct
     drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
     filters: {field:app_approved_date value: "-NULL"}
+    sql:  ${TABLE}.APPLICATION_NUMBER;;
+    sql_distinct_key: ${compound_primary_key};;
   }
 
   measure: count_taken_up_apps {
-    type: count
+    type: count_distinct
     drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
     filters: {field:status value: "SENT TO TSYS"}
+    sql:  ${TABLE}.APPLICATION_NUMBER;;
+    sql_distinct_key: ${compound_primary_key};;
+  }
+
+  measure: forecast_count {
+    sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
   }
 
   measure: pct_accepted_of_all_apps {
