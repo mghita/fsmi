@@ -28,6 +28,11 @@ view: looker_boifilechecks {
     sql: ${TABLE}.FILEDATE ;;
   }
 
+  dimension: filestring {
+    type: string
+    sql: ${TABLE}.FILESTRING ;;
+  }
+
   measure: filecount {
     type: sum
     sql: ${TABLE}.FILECOUNT ;;
@@ -49,10 +54,10 @@ view: looker_boifilechecks {
   set: detail {
     fields: [
       type,
-      filename,
+      filestring,
       frequency,
       file_date,
-      comments,
+      comments_updt,
       count,
       filecount
     ]
