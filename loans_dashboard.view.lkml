@@ -123,13 +123,13 @@ view:  loans_dashboard
 
   dimension: channel_src
   {type: string
-    sql: coalesce(${looker_loan_src_codes.channel_source}, 'SEO&Direct');;
+    sql: coalesce(${looker_ITOs_source_codes.source}, 'Natural Search');;
     full_suggestions: yes
   }
 
   dimension: src_group
   {type: string
-    sql: coalesce(${looker_loan_src_codes.source_group}, 'SEO&Direct');;
+    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
     full_suggestions: yes
   }
 

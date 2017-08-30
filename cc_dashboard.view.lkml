@@ -124,23 +124,13 @@ view: cc_dashboard {
     end;;
   }
 
-  dimension: full_hau {
-    type: string
-    sql:
-    case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO'
-      when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      when hau_type is null then 'Review HAU'
-      else ${looker_cc_ITO_codes.full_hau}
-    end;;
-  }
-
   dimension: hau_type {
     type: string
     sql:
     case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO & Direct'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      when hau_type is null then 'Review HAU'
-      else ${looker_cc_ITO_codes.hau_type}
+      when medium is null then 'Review HAU'
+      else ${looker_ITOs_source_codes.medium}
     end;;
   }
 
@@ -149,18 +139,8 @@ view: cc_dashboard {
     sql:
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      when hau_type is null then 'Review HAU'
-      else ${looker_cc_ITO_codes.hau_site}
-    end;;
-  }
-
-  dimension: hau_desc {
-    type: string
-    sql:
-    case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
-      when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      when hau_type is null then 'Review HAU'
-      else ${looker_cc_ITO_codes.hau_desc}
+      when medium is null then 'Review HAU'
+      else ${looker_ITOs_source_codes.source}
     end;;
   }
 
@@ -173,7 +153,7 @@ view: cc_dashboard {
 
   measure: count_accepted_apps {
     type: count_distinct
-    drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, count_accepted_apps]
     filters: {field:app_approved_date value: "-NULL"}
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
@@ -181,7 +161,7 @@ view: cc_dashboard {
 
   measure: count_taken_up_apps {
     type: count_distinct
-    drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, count_taken_up_apps]
     filters: {field:status value: "SENT TO TSYS"}
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
@@ -194,21 +174,21 @@ view: cc_dashboard {
   measure: pct_accepted_of_all_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, count_accepted_apps]
     sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, pct_takenup_of_all_apps]
     sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_accepted_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [full_hau, hau_type, hau_site, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, pct_takenup_of_accepted_apps]
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
