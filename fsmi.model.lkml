@@ -63,3 +63,14 @@ explore: cc_dashboard {
     ;;
   }
 }
+
+explore: looker_loan_dashboard_data{
+  join: looker_fs_monthly_forecasts
+  {
+    type: full_outer
+    relationship: many_to_one
+    sql_on:  ${looker_loan_dashboard_data.written_date} = ${looker_fs_monthly_forecasts.forecast_date}
+        and ${looker_fs_monthly_forecasts.prod_category}='Loan'
+    ;;
+  }
+}
