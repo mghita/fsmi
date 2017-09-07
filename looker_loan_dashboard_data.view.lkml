@@ -144,7 +144,7 @@ view: looker_loan_dashboard_data {
     type: count_distinct
     drill_fields: [source_group, source_channel, count_taken_up_apps]
     filters: {field:customer_decision value: "Taken Up"}
-    sql: ${TABLE}.ACCOUNT_NUMBER ;;
+    sql: ${TABLE}.APPLICATIONKEY;;
     sql_distinct_key: ${compound_primary_key};;
   }
 
