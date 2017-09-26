@@ -3,21 +3,21 @@ view: cc_dashboard {
 
   dimension_group: app_approved {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.APP_APPROVED_DATE ;;
   }
 
   dimension_group: app_rejected {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.APP_REJECTED_DATE ;;
   }
 
   dimension_group: application {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.APPLICATION_DATE ;;
   }
@@ -71,7 +71,7 @@ view: cc_dashboard {
 
   dimension_group: extract {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.EXTRACT_DATE ;;
   }
@@ -108,7 +108,7 @@ view: cc_dashboard {
 
   dimension_group: status_amended {
     type: time
-    timeframes: [date, week, month]
+    timeframes: [date, week, month, year]
     convert_tz: no
     sql: ${TABLE}.STATUS_AMENDED_DATE ;;
   }
@@ -146,7 +146,7 @@ view: cc_dashboard {
 
   measure: counts {
     type: count_distinct
-    drill_fields: []
+    drill_fields: [hau_type, hau_site, counts]
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
   }

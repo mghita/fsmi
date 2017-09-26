@@ -4,7 +4,7 @@ view: looker_fs_monthly_forecasts {
 
   measure: daily_forecast_count {
     type: sum_distinct
-    value_format: "0"
+    value_format: "#,##0"
     drill_fields: [detail*]
     sql: ${TABLE}.daily_forecast ;;
     sql_distinct_key: ${compound_primary_key};;

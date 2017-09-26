@@ -57,7 +57,7 @@ explore: cc_dashboard {
   {
     type: full_outer
     relationship: many_to_one
-    sql_on:  ${cc_dashboard.app_approved_date} = ${looker_fs_monthly_forecasts.forecast_date}
+    sql_on:  ${cc_dashboard.status_amended_date} = ${looker_fs_monthly_forecasts.forecast_date}
         and ${cc_dashboard.card_applied_for} =  ${looker_fs_monthly_forecasts.prod_subcategory}
         and ${looker_fs_monthly_forecasts.prod_category}='Credit Card'
     ;;

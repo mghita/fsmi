@@ -143,15 +143,22 @@ view:  loans_dashboard
   measure: counts_ytd {
     type: count
     drill_fields: [src_group, channel_src, counts]
-    filters: {field:final_decision_date value: "this year"
-      field: final_decision_week value: "before this week"
-    }
+    filters: {field:application_date value: "this year"}
+    filters: {field:application_week value: "before this week"}
   }
 
   measure: count_accepted_apps {
     type: count
     drill_fields: [src_group, channel_src, count_accepted_apps]
     filters: {field:application_decision value: "%Accept%"}
+  }
+
+  measure: count_accepted_apps_ytd {
+    type: count
+    drill_fields: [src_group, channel_src, count_accepted_apps]
+    filters: {field:application_decision value: "%Accept%"}
+    filters: {field:application_decision_date value: "this year"}
+    filters: {field:application_decision_week value: "before this week"}
   }
 
   measure: count_taken_up_apps {
@@ -162,7 +169,17 @@ view:  loans_dashboard
     sql_distinct_key: ${compound_primary_key};;
     }
 
-  measure: forecast_count {
+    measure: count_taken_up_apps_ytd {
+      type: count_distinct
+      drill_fields: [src_group, channel_src, count_taken_up_apps]
+      filters: {field:final_decision value: "Taken Up"}
+      filters: {field:final_decision_date value: "this year"}
+      filters: {field:final_decision_week value: "before this week"}
+      sql: ${TABLE}.ACCOUNT_NUMBER ;;
+      sql_distinct_key: ${compound_primary_key};;
+    }
+
+    measure: forecast_count {
     sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
     }
 
@@ -206,9 +223,8 @@ view:  loans_dashboard
     value_format:  "\"£\"#,##0,\" K\""
     drill_fields: [src_group, channel_src, total_amount_YTD]
     sql: ${loan_amount_agreed};;
-    filters: {field:final_decision_date value: "this year"
-      field: final_decision_date value: "before this week"
-    }
+    filters: {field:final_decision_date value: "this year"}
+    filters: {field:final_decision_week value: "before this week"}
   }
 
   measure: avg_amount_YTD {
@@ -216,9 +232,8 @@ view:  loans_dashboard
     value_format: "\"£\"#,##0.0,\" K\""
     drill_fields: [src_group, channel_src, avg_amount_YTD]
     sql: ${loan_amount_agreed};;
-    filters: {field:final_decision_date value: "this year"
-      field: final_decision_date value: "before this week"
-    }
+    filters: {field:final_decision_date value: "this year"}
+    filters: {field:final_decision_week value: "before this week"}
   }
 
   measure: weighted_avg_APR
