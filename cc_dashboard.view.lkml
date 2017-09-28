@@ -101,6 +101,17 @@ view: cc_dashboard {
     sql: ${TABLE}.RESPONSE_CODE ;;
   }
 
+  dimension: status_class {
+    type: string
+    sql:
+    case when ${status}  ='SENT TO TSYS'  then 'Opened'
+      when ${status}  ='APPROVED'  then 'Approved'
+      when ${status}   = 'APP DECLINED' then 'Declined'
+      when ${status}   in ('SENT FOR CUST RESPONSE', 'SENT FOR BOI ACTION') then 'Referred'
+      when ${status}   in ('CANCELLED', 'EXPIRED') then 'Cancelled/Expired'
+      else 'Unknown'
+    end;;  }
+
   dimension: status {
     type: string
     sql: ${TABLE}.STATUS ;;
@@ -132,6 +143,7 @@ view: cc_dashboard {
       when medium is null then 'Review HAU'
       else ${looker_ITOs_source_codes.medium}
     end;;
+    full_suggestions: yes
   }
 
   dimension: hau_site {
@@ -142,7 +154,8 @@ view: cc_dashboard {
       when medium is null then 'Review HAU'
       else ${looker_ITOs_source_codes.source}
     end;;
-  }
+    full_suggestions: yes
+ }
 
   measure: counts {
     type: count_distinct
