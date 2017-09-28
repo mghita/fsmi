@@ -143,7 +143,7 @@ view:  loans_dashboard
     type: count
     drill_fields: [src_group, channel_src, counts]
     filters: {field:application_date value: "this year"}
-    filters: {field:application_week value: "before this week"}
+    filters: {field:application_week value: "before 0 days ago"}
   }
 
   measure: count_accepted_apps {
@@ -157,7 +157,7 @@ view:  loans_dashboard
     drill_fields: [src_group, channel_src, count_accepted_apps]
     filters: {field:application_decision value: "%Accept%"}
     filters: {field:application_decision_date value: "this year"}
-    filters: {field:application_decision_week value: "before this week"}
+    filters: {field:application_decision_week value: "before 0 days ago"}
   }
 
   measure: count_taken_up_apps {
@@ -173,7 +173,7 @@ view:  loans_dashboard
     drill_fields: [src_group, channel_src, count_taken_up_apps]
     filters: {field:final_decision value: "Taken Up"}
     filters: {field:final_decision_date value: "this year"}
-    filters: {field:final_decision_week value: "before this week"}
+    filters: {field:final_decision_week value: "before 0 days ago"}
     sql: ${TABLE}.ACCOUNT_NUMBER ;;
     sql_distinct_key: ${compound_primary_key};;
   }
@@ -223,7 +223,7 @@ view:  loans_dashboard
     drill_fields: [src_group, channel_src, total_amount_YTD]
     sql: ${loan_amount_agreed};;
     filters: {field:final_decision_date value: "this year"}
-    filters: {field:final_decision_week value: "before this week"}
+    filters: {field:final_decision_week value: "before 0 days ago"}
   }
 
   measure: avg_amount_YTD {
@@ -232,7 +232,7 @@ view:  loans_dashboard
     drill_fields: [src_group, channel_src, avg_amount_YTD]
     sql: ${loan_amount_agreed};;
     filters: {field:final_decision_date value: "this year"}
-    filters: {field:final_decision_week value: "before this week"}
+    filters: {field:final_decision_week value: "before 0 days ago"}
   }
 
   measure: weighted_avg_APR
