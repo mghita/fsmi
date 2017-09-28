@@ -15,19 +15,19 @@ view:  loans_dashboard
 
   dimension: source_code
   {type: string
-  sql:${TABLE}.source_code;;}
+    sql:${TABLE}.source_code;;}
 
   dimension: loan_purpose
   {type: string
-  sql: ${TABLE}.loanpurpose;;}
+    sql: ${TABLE}.loanpurpose;;}
 
   dimension: product_name
   {type: string
-  sql:${TABLE}.product_name;;}
+    sql:${TABLE}.product_name;;}
 
   dimension: loan_amount_applied
   {type: number
-  sql: ${TABLE}.loan_amount_applied;;}
+    sql: ${TABLE}.loan_amount_applied;;}
 
   dimension: loan_amount_applied_band
   {type:tier
@@ -38,7 +38,7 @@ view:  loans_dashboard
 
   dimension: loan_term_application
   {type: number
-  sql: ${TABLE}.loan_term_application;;}
+    sql: ${TABLE}.loan_term_application;;}
 
   dimension: loan_term_application_band
   {type:tier
@@ -110,10 +110,9 @@ view:  loans_dashboard
     when ${application_decision} = 'Refer' then '3. Refer'
     when ${application_decision} = 'Refer Decline' then '4. Refer Decline'
     when ${application_decision} = 'Auto Decline' then '5. Auto Decline'
-    when ${application_decision} = 'Refer' then '6. Refer'
-    when ${application_decision} = 'Exception' then '7. Exception'
-    when ${application_decision} like '%Application Error%' then  '8. Application Error'
-    else 'Not Available'
+    when ${application_decision} = 'Exception' then '6. Exception'
+    when ${application_decision} like '%Application Error%' then  '7. Application Error'
+    else '8. Not Available'
 
     end ;;
   }
@@ -167,21 +166,21 @@ view:  loans_dashboard
     filters: {field:final_decision value: "Taken Up"}
     sql: ${TABLE}.ACCOUNT_NUMBER ;;
     sql_distinct_key: ${compound_primary_key};;
-    }
+  }
 
-    measure: count_taken_up_apps_ytd {
-      type: count_distinct
-      drill_fields: [src_group, channel_src, count_taken_up_apps]
-      filters: {field:final_decision value: "Taken Up"}
-      filters: {field:final_decision_date value: "this year"}
-      filters: {field:final_decision_week value: "before this week"}
-      sql: ${TABLE}.ACCOUNT_NUMBER ;;
-      sql_distinct_key: ${compound_primary_key};;
-    }
+  measure: count_taken_up_apps_ytd {
+    type: count_distinct
+    drill_fields: [src_group, channel_src, count_taken_up_apps]
+    filters: {field:final_decision value: "Taken Up"}
+    filters: {field:final_decision_date value: "this year"}
+    filters: {field:final_decision_week value: "before this week"}
+    sql: ${TABLE}.ACCOUNT_NUMBER ;;
+    sql_distinct_key: ${compound_primary_key};;
+  }
 
-    measure: forecast_count {
+  measure: forecast_count {
     sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
-    }
+  }
 
   measure: pct_accepted_of_all_apps {
     type: number
