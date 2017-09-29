@@ -91,6 +91,13 @@ view:  loans_dashboard
     sql: ${TABLE}.APPLICATION_DECISION_DATE ;;
   }
 
+  dimension_group: initial_decision {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.INIT_APPLICATION_DECISION_DT;;
+  }
+
   dimension_group: final_decision {
     type: time
     timeframes: [date, week, month, year]
@@ -99,7 +106,7 @@ view:  loans_dashboard
   }
 
   dimension: application_decision
-  {sql: ${TABLE}.application_decision;;}
+  {sql: ${TABLE}.APPLICATION_DECISION;;}
 
 
   dimension: application_decision_pivot  {
@@ -117,8 +124,11 @@ view:  loans_dashboard
     end ;;
   }
 
+  dimension: initial_decision
+  {sql: ${TABLE}.INITIAL_APPLICATION_DECISION;;}
+
   dimension: final_decision
-  {sql: ${TABLE}.final_decision;;}
+  {sql: ${TABLE}.FINAL_DECISION;;}
 
   dimension: channel_src
   {type: string
