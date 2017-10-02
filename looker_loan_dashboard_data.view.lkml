@@ -149,7 +149,7 @@ view: looker_loan_dashboard_data {
   }
 
   measure: forecast_count {
-    sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
+    sql: ${looker_fs_monthly_forecasts.forecast_count};;
   }
 
   measure: pct_accepted_of_all_apps {

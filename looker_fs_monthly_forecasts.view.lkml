@@ -2,7 +2,7 @@ view: looker_fs_monthly_forecasts {
 
   sql_table_name: BOIFS.looker_FS_Monthly_Forecasts ;;
 
-  measure: daily_forecast_count {
+  measure: forecast_count {
     type: sum_distinct
     value_format: "#,##0"
     drill_fields: [detail*]
@@ -57,7 +57,7 @@ view: looker_fs_monthly_forecasts {
       forecast_date,
       prod_category,
       prod_subcategory,
-      daily_forecast_count
+      forecast_count
     ]
   }
 }

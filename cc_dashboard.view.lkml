@@ -182,7 +182,7 @@ view: cc_dashboard {
 
   measure: forecast_count {
     value_format: "#,##0"
-    sql: ${looker_fs_monthly_forecasts.daily_forecast_count};;
+    sql: ${looker_fs_monthly_forecasts.forecast_count};;
   }
 
   measure: pct_accepted_of_all_apps {
