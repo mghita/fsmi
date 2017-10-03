@@ -69,7 +69,7 @@ explore: looker_loan_dashboard_data{
   {
     type: full_outer
     relationship: many_to_one
-    sql_on:  ${looker_loan_dashboard_data.written_date} = ${looker_fs_monthly_forecasts.forecast_date}
+    sql_on:  ${looker_loan_dashboard_data.drawdown_date} = ${looker_fs_monthly_forecasts.forecast_date}
         and ${looker_fs_monthly_forecasts.prod_category}='Loan'
     ;;
   }

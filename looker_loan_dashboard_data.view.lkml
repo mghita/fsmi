@@ -11,7 +11,7 @@ view: looker_loan_dashboard_data {
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
-    sql: to_date(${TABLE}.applicationdatekey,'YYYYMMDD') ;;
+    sql: to_date(${TABLE}.APPLICATIONDATEKEY,'YYYYMMDD') ;;
   }
 
   dimension: compound_primary_key {
@@ -33,28 +33,33 @@ view: looker_loan_dashboard_data {
     full_suggestions: yes
   }
 
-  dimension_group: latest_decision {
+  dimension_group: boi_decision {
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
-    sql: to_date(${TABLE}.latest_decision_date,'YYYYMMDD') ;;
+    sql: to_date(${TABLE}.BOIDECISIONDATEKEY,'YYYYMMDD') ;;
   }
 
-  dimension: boi_latest_decision {
+  dimension: latest_application_decision {
     type: string
-    sql: ${TABLE}.BOI_LATEST_DECISION ;;
+    sql: ${TABLE}.LATESTAPPLICATIONDECISION;;
   }
 
-  dimension: application_decision {
+  dimension: final_application_decision {
     type: string
-    sql: ${TABLE}.BOI_FINAL_DECISION ;;
+    sql: ${TABLE}.FINALAPPLICATIONDECISION;;
   }
 
-  dimension_group: written {
+  dimension: refer_outcomes_status {
+    type: string
+    sql: ${TABLE}.REFEROUTCOMESSTATUS;;
+  }
+
+  dimension_group: drawdown {
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
-    sql: to_date(${TABLE}.written_date,'YYYYMMDD') ;;
+    sql: to_date(${TABLE}.DRAWDOWN_DATE,'YYYYMMDD') ;;
   }
 
   dimension: customer_decision {
@@ -137,7 +142,7 @@ view: looker_loan_dashboard_data {
   measure: count_accepted_apps {
     type: count
     drill_fields: [source_group, source_channel, count_accepted_apps]
-    filters: {field:application_decision value: "%Accept%"}
+    filters: {field:final_application_decision value: "%Accept%"}
   }
 
   measure: count_taken_up_apps {
