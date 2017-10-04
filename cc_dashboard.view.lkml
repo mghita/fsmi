@@ -151,22 +151,34 @@ view: cc_dashboard {
     sql:
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
+      when source like 'RP -%' then 'RunPath'
       when medium is null then 'Review HAU'
       else ${looker_ITOs_source_codes.source}
     end;;
     full_suggestions: yes
  }
 
+  dimension: hau_site_explicit {
+    type: string
+    sql:
+    case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
+      when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
+      when medium is null then 'Review HAU'
+      else ${looker_ITOs_source_codes.source}
+    end;;
+    full_suggestions: yes
+  }
+
   measure: counts {
     type: count_distinct
-    drill_fields: [hau_type, hau_site, counts]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, counts]
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
   }
 
   measure: count_accepted_apps {
     type: count_distinct
-    drill_fields: [hau_type, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, count_accepted_apps]
     filters: {field:app_approved_date value: "-NULL"}
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
@@ -174,7 +186,7 @@ view: cc_dashboard {
 
   measure: count_taken_up_apps {
     type: count_distinct
-    drill_fields: [hau_type, hau_site, count_taken_up_apps]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, count_taken_up_apps]
     filters: {field:status value: "SENT TO TSYS"}
     sql:  ${TABLE}.APPLICATION_NUMBER;;
     sql_distinct_key: ${compound_primary_key};;
@@ -188,21 +200,21 @@ view: cc_dashboard {
   measure: pct_accepted_of_all_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [hau_type, hau_site, count_accepted_apps]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, count_accepted_apps]
     sql: 100*${count_accepted_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_all_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [hau_type, hau_site, pct_takenup_of_all_apps]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, pct_takenup_of_all_apps]
     sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
   }
 
   measure: pct_takenup_of_accepted_apps {
     type: number
     value_format: "0.0\%"
-    drill_fields: [hau_type, hau_site, pct_takenup_of_accepted_apps]
+    drill_fields: [hau_type, hau_site, hau_site_explicit, pct_takenup_of_accepted_apps]
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
 
