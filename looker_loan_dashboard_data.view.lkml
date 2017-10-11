@@ -33,6 +33,16 @@ view: looker_loan_dashboard_data {
     full_suggestions: yes
   }
 
+  dimension: project_filter
+  {type: string
+    sql:
+    case
+    when ${TABLE}.sourcecode in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
+          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01') then 'Project Dandelion'
+    end ;;
+    full_suggestions: yes
+  }
+
   dimension_group: boi_decision {
     type: time
     timeframes: [date, week, month, year]
