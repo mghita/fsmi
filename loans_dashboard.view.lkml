@@ -142,6 +142,16 @@ view:  loans_dashboard
     full_suggestions: yes
   }
 
+  dimension: project_filter
+  {type: string
+    sql:
+    case
+    when ${source_code} in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
+          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01') then 'Project Dandelion'
+    end ;;
+    full_suggestions: yes
+  }
+
   measure: counts {
     type: count_distinct
     drill_fields: [src_group, channel_src, counts]
