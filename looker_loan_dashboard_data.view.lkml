@@ -29,7 +29,7 @@ view: looker_loan_dashboard_data {
 
   dimension: source_channel {
     type: string
-    sql: case when source like 'RP-%' then 'RunPath'
+    sql: case when SOURCE_CHANNEL like 'RP-%' then 'RunPath'
       else  ${TABLE}.SOURCE_CHANNEL end;;
     full_suggestions: yes
   }
