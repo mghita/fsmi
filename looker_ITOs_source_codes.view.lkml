@@ -21,6 +21,19 @@ view: looker_ITOs_source_codes {
     sql: ${TABLE}.source ;;
   }
 
+  dimension_group: start {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.start ;;
+  }
+
+  dimension_group: end {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.end ;;
+  }
   measure: count {
     type: count
     drill_fields: []
