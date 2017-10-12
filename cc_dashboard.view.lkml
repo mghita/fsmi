@@ -151,7 +151,7 @@ view: cc_dashboard {
     sql:
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      when source like 'RP -%' then 'RunPath'
+      when source like 'RP-%' then 'RunPath'
       when medium is null then 'Review HAU'
       else ${looker_ITOs_source_codes.source}
     end;;
