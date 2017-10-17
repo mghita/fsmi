@@ -39,7 +39,7 @@ view: looker_loan_dashboard_data {
     sql:
     case
     when ${TABLE}.sourcecode in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
-          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01') then 'Project Dandelion'
+          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01', 'aflu01') then 'Project Dandelion'
     end ;;
     full_suggestions: yes
   }
