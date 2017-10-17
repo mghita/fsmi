@@ -151,10 +151,12 @@ view: looker_loan_dashboard_data {
   }
 
   measure: count_accepted_apps {
-    type: count
-    drill_fields: [source_group, source_channel, count_accepted_apps]
+    type: count_distinct
+    drill_fields: [source_group, source_channel, count_taken_up_apps]
     filters: {field:final_application_decision value: "%Accept%"}
-  }
+    sql: ${TABLE}.APPLICATIONKEY;;
+    sql_distinct_key: ${compound_primary_key};;
+    }
 
   measure: count_taken_up_apps {
     type: count_distinct
