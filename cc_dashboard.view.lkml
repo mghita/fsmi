@@ -138,8 +138,7 @@ view: cc_dashboard {
   dimension: hau_type {
     type: string
     sql:
-    case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO & Direct'
-      when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
+    case when channel in ('Internet','Contact Centre')  and ${TABLE}.hau is null then 'SEO & Direct'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.medium}
     end;;
@@ -149,8 +148,7 @@ view: cc_dashboard {
   dimension: hau_site {
     type: string
     sql:
-    case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
-      when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
+    case when channel in ('Internet','Contact Centre')  and ${TABLE}.hau is null then 'SEO & Direct'
       when source like 'RP-%' then 'RunPath'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
