@@ -140,17 +140,9 @@ view: cc_dashboard {
     sql:
     case when channel = 'Internet' and ${TABLE}.hau is null then 'SEO & Direct'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
-      # when medium is null then 'Review HAU'
+      when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.medium}
     end;;
-    full_suggestions: yes
-  }
-
-  dimension: test {
-    type: string
-    sql:
-     ${looker_ITOs_source_codes.medium}
-    ;;
     full_suggestions: yes
   }
 
@@ -160,7 +152,7 @@ view: cc_dashboard {
     case when channel = 'Internet' and ${TABLE}.hau is null then 'Natural Search'
       when channel = 'Contact Centre' and  ${TABLE}.hau is null then 'Contact Centre'
       when source like 'RP-%' then 'RunPath'
-      when medium is null then 'Review HAU'
+      when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
     end;;
     full_suggestions: yes

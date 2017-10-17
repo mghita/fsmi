@@ -52,7 +52,7 @@ explore: cc_dashboard {
     type: left_outer
     relationship: many_to_one
     sql_on: ${cc_dashboard.hau} = ${looker_ITOs_source_codes.code}
-           and to_date(${cc_dashboard.application_date} between ${looker_ITOs_source_codes.start_date} and ${looker_ITOs_source_codes.end_date}
+           and ${cc_dashboard.application_date} between ${looker_ITOs_source_codes.start_date} and ${looker_ITOs_source_codes.end_date}
     ;;
   }
   join: looker_fs_monthly_forecasts
