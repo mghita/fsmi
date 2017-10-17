@@ -25,14 +25,14 @@ view: looker_ITOs_source_codes {
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
-    sql: ${TABLE}.start ;;
+    sql: ${TABLE}.start_date ;;
   }
 
   dimension_group: end {
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
-    sql: ${TABLE}.end ;;
+    sql: ${TABLE}.end_date ;;
   }
   measure: count {
     type: count
