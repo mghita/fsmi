@@ -34,7 +34,7 @@ explore: loans_dashboard{
   {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${loans_dashboard.source_code} = ${looker_ITOs_source_codes.code};;
+    sql_on: upper(${loans_dashboard.source_code}) = upper(${looker_ITOs_source_codes.code});;
   }
   join: looker_fs_monthly_forecasts
   {
@@ -51,7 +51,7 @@ explore: cc_dashboard {
   {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${cc_dashboard.hau} = ${looker_ITOs_source_codes.code}
+    sql_on: upper(${cc_dashboard.hau}) = upper(${looker_ITOs_source_codes.code})
            and ${cc_dashboard.application_date} between ${looker_ITOs_source_codes.start_date} and ${looker_ITOs_source_codes.end_date}
     ;;
   }
