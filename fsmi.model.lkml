@@ -32,7 +32,7 @@ explore: looker_boifilechecks {}
 explore: loans_dashboard{
   join: looker_ITOs_source_codes
   {
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
     sql_on: upper(${loans_dashboard.source_code}) = upper(${looker_ITOs_source_codes.code});;
   }
@@ -49,7 +49,7 @@ explore: loans_dashboard{
 explore: cc_dashboard {
   join: looker_ITOs_source_codes
   {
-    type: left_outer
+    type: full_outer
     relationship: many_to_one
     sql_on: upper(${cc_dashboard.hau}) = upper(${looker_ITOs_source_codes.code})
            and ${cc_dashboard.application_date} between ${looker_ITOs_source_codes.start_date} and ${looker_ITOs_source_codes.end_date}
