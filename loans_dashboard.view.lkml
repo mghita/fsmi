@@ -277,6 +277,11 @@ view:  loans_dashboard
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;
   }
 
+  measure: weighted_avg_APR_at_application
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.weighted_APR_at_application)/sum(${TABLE}.loan_amount_applied);;
+  }
   measure: weighted_avg_term
   {type: number
     value_format: "0.0"
