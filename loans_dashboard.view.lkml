@@ -147,7 +147,7 @@ view:  loans_dashboard
     sql:
     case
     when ${source_code} in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
-          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01') then 'Project Dandelion'
+          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01', 'aflu01') then 'Project Dandelion'
     end ;;
     full_suggestions: yes
   }
@@ -231,11 +231,26 @@ view:  loans_dashboard
     sql: ${loan_amount_agreed};;
   }
 
+  measure: avg_amount_applied {
+    type: average
+    value_format: "\"£\"#,##0.0,\" K\""
+    drill_fields: [src_group, channel_src, avg_amount]
+    sql: ${loan_amount_applied};;
+  }
+
+
   measure: total_amount {
     type: sum
     value_format:  "\"£\"#,##0,\" K\""
     drill_fields: [src_group, channel_src, total_amount]
     sql: ${loan_amount_agreed};;
+  }
+
+    measure: total_amount_applied {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    drill_fields: [src_group, channel_src, total_amount]
+    sql: ${loan_amount_applied};;
   }
 
   measure: total_amount_YTD {
@@ -262,6 +277,11 @@ view:  loans_dashboard
     sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;
   }
 
+  measure: weighted_avg_APR_at_application
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.weighted_APR_at_application)/sum(${TABLE}.loan_amount_applied);;
+  }
   measure: weighted_avg_term
   {type: number
     value_format: "0.0"
