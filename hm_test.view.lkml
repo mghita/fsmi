@@ -1,5 +1,5 @@
 view: hm_test {
-  sql_table_name: BOIFS.LOOKER_HM_TEST ;;
+  sql_table_name: BOIFS.LOOKER_LOAN_APPLICATION ;;
 
   measure: count {
     type: count
