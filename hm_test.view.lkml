@@ -32,9 +32,14 @@ view: hm_test {
     sql: ${TABLE}.DECLINEREASON ;;
   }
 
-  dimension: productsubtypecode {
+  dimension: term_length {
     type: string
-    sql: ${TABLE}.PRODUCTSUBTYPECODE ;;
+    sql: ${TABLE}.term_length ;;
+  }
+
+  dimension: product_fee {
+    type: string
+    sql: ${TABLE}.product_fee ;;
   }
 
   dimension: loanamount {
@@ -93,7 +98,8 @@ view: hm_test {
       status,
       cancelreason,
       declinereason,
-      productsubtypecode,
+      term_length,
+      product_fee,
       loanamount,
       totpurchaseprice,
       totappincome,
