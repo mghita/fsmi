@@ -72,8 +72,8 @@ view:  loans_dashboard
 
   dimension: loan_APR_band
   {type:tier
-    tiers: [2.5,5,10,12.5,15,20,25,30]
-    style:interval
+    tiers: [5,10,15,20,25]
+    style:integer
     sql:loan_APR;;
   }
 
@@ -147,7 +147,7 @@ view:  loans_dashboard
     sql:
     case
     when ${source_code} in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
-          'afky01', 'agms01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01', 'aflu01') then 'Project Dandelion'
+          'afky01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01', 'aflu01') then 'Project Dandelion'
     end ;;
     full_suggestions: yes
   }
