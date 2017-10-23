@@ -6,6 +6,12 @@ view: hm_test {
     drill_fields: [detail*]
   }
 
+  measure: total_loan_amount {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${tot_loan_amt};;
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
