@@ -38,7 +38,7 @@ view: hm_test {
   }
 
   dimension: product_fee {
-    type: string
+    type: number
     sql: ${TABLE}.product_fee ;;
     value_format_name: "gbp_0"
   }
