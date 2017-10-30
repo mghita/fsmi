@@ -40,7 +40,7 @@ view: hm_test {
   dimension: product_fee {
     type: number
     sql: ${TABLE}.product_fee ;;
-    value_format:  "\"£\"#,##0,\" K\""
+    value_format_name: "gbp_0"
   }
 
   dimension: loanamount {
