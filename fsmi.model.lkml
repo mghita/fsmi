@@ -29,6 +29,8 @@ explore: looker_fs_monthly_forecasts {}
 
 explore: looker_boifilechecks {}
 
+explore: looker_loan_repayment_history {}
+
 explore: loans_dashboard{
   join: looker_ITOs_source_codes
   {
