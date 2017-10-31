@@ -176,9 +176,9 @@ view: looker_loan_repayment_history {
     sql: 'Payment '||${TABLE}.PAYMENTNUMBER ;;
   }
 
-  dimension: payments_made {
+  dimension: expected_payments_made {
     type: number
-    sql: ${TABLE}.PAYMENTS_MADE;;
+    sql: ${TABLE}.EXPECTED_PAYMENTS_MADE;;
   }
 
   dimension: paymentamount {
