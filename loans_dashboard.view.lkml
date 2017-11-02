@@ -133,7 +133,7 @@ view:  loans_dashboard
   dimension: channel_src
   {type: string
     sql:
-    case when channel in ('Internet','Contact Centre')  and ${TABLE}.source_code is null then 'SEO & Direct'
+    case when ${TABLE}.source_code is null then 'SEO & Direct'
       when source like 'RP-%' then 'RunPath'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
@@ -144,7 +144,7 @@ view:  loans_dashboard
   dimension: channel_src_explicit {
     type: string
     sql:
-    case when channel in ('Internet','Contact Centre')  and ${TABLE}.source_code is null then 'Natural Search'
+    case when ${TABLE}.source_code is null then 'Natural Search'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
     end;;
