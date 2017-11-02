@@ -10,6 +10,14 @@ view: looker_fs_monthly_forecasts {
     sql_distinct_key: ${compound_primary_key};;
   }
 
+  measure: forecast_count_OCT17 {
+    type: sum_distinct
+    value_format: "#,##0"
+    drill_fields: [detail*]
+    sql: ${TABLE}.daily_forecast_24oct17 ;;
+    sql_distinct_key: ${compound_primary_key};;
+  }
+
   dimension: compound_primary_key {
     primary_key: yes
     type: string
@@ -37,9 +45,13 @@ view: looker_fs_monthly_forecasts {
 
   dimension: monthly_forecast {
     type: string
-    sql: ${TABLE}.FORECAST ;;
+    sql: ${TABLE}.MONTHLY_FORECAST ;;
   }
 
+  dimension: monthly_forecast_OCT17 {
+    type: string
+    sql: ${TABLE}.MONTHLY_FORECAST_24oct17;;
+  }
   dimension: days_in_month {
     type: string
     sql: ${TABLE}.NO_DAYS ;;
@@ -47,7 +59,12 @@ view: looker_fs_monthly_forecasts {
 
   dimension: daily_forecast {
     type: string
-    sql: ${TABLE}.daily_forecast ;;
+    sql: ${TABLE}.daily_forecast;;
+  }
+
+  dimension: daily_forecast_OCT17 {
+    type: string
+    sql: ${TABLE}.daily_forecast_24oct17;;
   }
 
   set: detail {
