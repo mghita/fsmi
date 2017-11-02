@@ -150,7 +150,6 @@ view: cc_dashboard {
     sql:
     case when channel in ('Internet','Contact Centre')  and ${TABLE}.hau is null then 'SEO & Direct'
       when source like 'RP-%' then 'RunPath'
-      when source like 'RP-%' then 'RunPath'
       when source like 'OP-%' then 'Optimise'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
