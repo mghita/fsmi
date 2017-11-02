@@ -135,6 +135,7 @@ view:  loans_dashboard
     sql:
     case when ${TABLE}.source_code is null then 'SEO & Direct'
       when source like 'RP-%' then 'RunPath'
+      when source like 'OP-%' then 'Optimise'
       when medium is null then 'Unknown'
       else ${looker_ITOs_source_codes.source}
     end;;
