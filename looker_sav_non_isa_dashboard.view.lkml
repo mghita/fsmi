@@ -42,13 +42,17 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.ITOCODE ;;
   }
 
-  dimension: activation_date {
-    type: date
+  dimension_group: activation_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.ACTIVATION_DATE ;;
   }
 
-  dimension: accounting_date {
-    type: date
+  dimension_group: accounting_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.ACCOUNTING_DATE ;;
   }
 
@@ -65,8 +69,6 @@ view: looker_sav_non_isa_dashboard {
       source,
       account_status,
       itocode,
-      activation_date,
-      accounting_date,
       balance
     ]
   }
