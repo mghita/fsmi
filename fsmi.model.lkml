@@ -81,3 +81,4 @@ explore: looker_loan_dashboard_data{
 }
 
 explore: hm_test {}
+explore: looker_sav_dashboard {}
