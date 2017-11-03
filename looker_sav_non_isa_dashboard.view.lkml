@@ -1,4 +1,4 @@
-view: looker_sav_dashboard {
+view: looker_sav_non_isa_dashboard {
   sql_table_name: BOIFS.LOOKER_SAV_DASHBOARD_DATA ;;
 
   measure: count {
