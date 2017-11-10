@@ -11,6 +11,7 @@ view: looker_loan_matchback_data {
     type: count
     filters: {field:application_id value: "-NULL"}
   }
+
   measure: count_accepted_apps {
     type: count
     filters: {field:application_decision value: "%Accept%"}
@@ -49,6 +50,40 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.CAMPAIGN_CODE ;;
   }
 
+  dimension: days_to_follow_up {
+    type: number
+    sql: ${TABLE}.DAYS_TO_FOLLOW_UP;;
+  }
+
+  dimension: days_between_comms_and_app {
+    type: number
+    sql: to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.COMMUNICATION_DATE);;
+  }
+
+  dimension: days_between_comms_and_app_grouped {
+    type: string
+    sql:
+      case when ${days_between_comms_and_app} between 0 and 10 then '1. Within 10 days'
+        when ${days_between_comms_and_app} between 11 and 20 then '2. Between 11 and 20 days after'
+        when ${days_between_comms_and_app} between 21 and 30 then '3. Between 21 and 30 days after'
+        when ${days_between_comms_and_app} between 31 and 40 then '4. Between 31 and 40 days after'
+        when ${days_between_comms_and_app} between 41 and 50 then '5. Between 41 and 50 days after'
+        when ${days_between_comms_and_app} between 51 and 60 then '6. Between 51 and 60 days after'
+      end
+    ;;
+  }
+
+  dimension: app_pre_or_post_follow_up {
+    type: string
+    sql:
+      case when ${follow_up_flag} = 'No Follow Up' then ${follow_up_flag}
+        when ${follow_up_flag} = 'Follow Up' and ${days_between_comms_and_app}  < ${days_to_follow_up} then 'Before Follow Up'
+        when ${follow_up_flag} = 'Follow Up' and ${days_between_comms_and_app}  >= ${days_to_follow_up} then 'After Follow Up'
+
+      end
+    ;;
+  }
+
   dimension: contact_date {
     type: date
     sql: ${TABLE}.CONTACT_DATE ;;
@@ -77,6 +112,11 @@ view: looker_loan_matchback_data {
   dimension: fallow_flag {
     type: string
     sql: ${TABLE}.FALLOW_FLAG ;;
+  }
+
+  dimension: follow_up_flag {
+    type: string
+    sql: ${TABLE}.FOLLOW_UP_FLAG ;;
   }
 
   dimension: application_id {
