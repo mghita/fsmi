@@ -2,8 +2,9 @@ view: looker_sav_non_isa_dashboard {
   sql_table_name: BOIFS.LOOKER_SAV_DASHBOARD_DATA ;;
 
   measure: count {
-    type: count
+    type: count_distinct
     drill_fields: [detail*]
+    sql: ${TABLE}.ACCOUNT_NUMBER ;;
   }
 
   measure: sav_balance {
