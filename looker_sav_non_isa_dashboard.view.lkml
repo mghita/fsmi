@@ -2,7 +2,7 @@ view: looker_sav_non_isa_dashboard {
   sql_table_name: BOIFS.LOOKER_SAV_DASHBOARD_DATA ;;
 
   measure: count {
-    type: count_distinct
+    type: count
     drill_fields: [detail*]
   }
 
