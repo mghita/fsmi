@@ -54,14 +54,14 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.ACTIVATION_DATE ;;
   }
 
-  dimension_group: accounting_date {
+  dimension_group: accounting {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
     sql: ${TABLE}.ACCOUNTING_DATE ;;
   }
 
-  dimension_group: extractdate {
+  dimension_group: extract {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
