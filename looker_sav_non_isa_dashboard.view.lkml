@@ -37,6 +37,11 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.ACCOUNT_STATUS ;;
   }
 
+  dimension: balance_group {
+    type: string
+    sql: ${TABLE}.BALANCE_GROUP ;;
+  }
+
   dimension: itocode {
     type: string
     sql: ${TABLE}.ITOCODE ;;
@@ -54,6 +59,13 @@ view: looker_sav_non_isa_dashboard {
     timeframes: [date, week, month, year, raw]
     convert_tz: no
     sql: ${TABLE}.ACCOUNTING_DATE ;;
+  }
+
+  dimension_group: extractdate {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.EXTRACTDATE ;;
   }
 
   dimension: balance {
