@@ -1,10 +1,13 @@
 view: looker_mortgage_data {
   sql_table_name: BOIFS.LOOKER_HM_TEST ;;
 
+
   measure: count {
-    type: count
+    type: count_distinct
     drill_fields: [detail*]
+    sql: ${TABLE}.ACCNUMBER ;;
   }
+
 
   measure: total_loan_amount {
     type: sum
