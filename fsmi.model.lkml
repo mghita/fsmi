@@ -71,16 +71,16 @@ explore: cc_dashboard {
   }
 }
 
-explore: looker_loan_dashboard_data{
-  join: looker_fs_monthly_forecasts
-  {
-    type: full_outer
-    relationship: many_to_one
-    sql_on:  ${looker_loan_dashboard_data.drawdown_date} = ${looker_fs_monthly_forecasts.forecast_date}
-        and ${looker_fs_monthly_forecasts.prod_category}='Loan'
-    ;;
-  }
-}
+# explore: looker_loan_dashboard_data{
+#   join: looker_fs_monthly_forecasts
+#   {
+#     type: full_outer
+#     relationship: many_to_one
+#     sql_on:  ${looker_loan_dashboard_data.drawdown_date} = ${looker_fs_monthly_forecasts.forecast_date}
+#         and ${looker_fs_monthly_forecasts.prod_category}='Loan'
+#     ;;
+#   }
+# }
 
 explore: hm_test {}
 explore: looker_sav_non_isa_dashboard {}
