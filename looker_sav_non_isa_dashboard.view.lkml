@@ -47,7 +47,7 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.ITOCODE ;;
   }
 
-  dimension_group: activation_date {
+  dimension_group: activation {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
