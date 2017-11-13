@@ -9,25 +9,25 @@ include: "*.dashboard"
 
 explore: looker_cc_application {}
 
-explore: loans_app_mth_v {}
+# explore: loans_app_mth_v {}
 
-explore: loans_flat_file {}
+# explore: loans_flat_file {}
 
-explore: looker_loan_src_codes {}
+# explore: looker_loan_src_codes {}
 
-explore: looker_sav_non_isa_account {}
+# explore: looker_sav_non_isa_account {}
 
-explore: looker_cc_ITO_codes {}
+# explore: looker_cc_ITO_codes {}
 
-explore: looker_ITOs_source_codes {}
+# explore: looker_ITOs_source_codes {}
 
-explore: ro_calendar {}
+# explore: ro_calendar {}
 
-explore: looker_loan_application {}
+# explore: looker_loan_application {}
 
-explore: looker_fs_monthly_forecasts {}
+# explore: looker_fs_monthly_forecasts {}
 
-explore: looker_boifilechecks {}
+# explore: looker_boifilechecks {}
 
 explore: looker_loan_repayment_history {}
 
