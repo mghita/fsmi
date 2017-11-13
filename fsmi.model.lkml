@@ -82,5 +82,5 @@ explore: looker_loan_dashboard_data{
   }
 }
 
-explore: hm_test {}
+explore: looker_mortgage_data {}
 explore: looker_sav_non_isa_dashboard {}
