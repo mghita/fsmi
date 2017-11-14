@@ -184,7 +184,7 @@ view:  loans_dashboard
           'afcl01', 'afbm01', 'afww01', 'aftu01', 'afmp01', 'afmy01',
           'aful01', 'afot01', 'afal01', 'afuk01', 'afla01', 'afdv01',
           'affn01', 'affl01', 'afsh01', 'afon01', 'afdo01', 'afwo01',
-          'aflc01', 'afym01', 'dinm01', 'afcc01', 'afdr01', 'aflz01',
+          'aflc01', 'afym01', 'dinm01', 'afcc01', 'aflz01',
           'emus01', 'aglm01'
           ) then 'Project Dandelion'
     end ;;
