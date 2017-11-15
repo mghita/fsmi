@@ -49,6 +49,13 @@ explore: loans_dashboard{
         and ${looker_fs_monthly_forecasts.prod_category}='Loan'
     ;;
   }
+  join: looker_dandelion_codes
+  {
+    type: full_outer
+    relationship: many_to_one
+    sql_on: upper(${loans_dashboard.source_code}) = upper(${looker_dandelion_codes.source_code})
+      and ${loans_dashboard.application_date} >= ${looker_dandelion_codes.start_date};;
+  }
 }
 
 explore: cc_dashboard {
