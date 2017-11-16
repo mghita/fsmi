@@ -13,6 +13,12 @@ view: looker_sav_non_isa_dashboard {
     sql: ${balance};;
   }
 
+  measure: accounting_balance {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${acc_balance};;
+  }
+
   dimension: account_number {
     type: string
     sql: ${TABLE}.ACCOUNT_NUMBER ;;
@@ -74,6 +80,11 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.BALANCE ;;
   }
 
+  dimension: acc_balance {
+    type: string
+    sql: ${TABLE}.ACC_BALANCE ;;
+  }
+
   set: detail {
     fields: [
       account_number,
@@ -82,7 +93,8 @@ view: looker_sav_non_isa_dashboard {
       source,
       account_status,
       itocode,
-      balance
+      balance,
+      acc_balance
     ]
   }
 }
