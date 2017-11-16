@@ -161,33 +161,7 @@ view:  loans_dashboard
   dimension: project_filter
   {type: string
     sql:
-    case
-    when ${source_code} in ('aftc01', 'aftm01', 'agus01', 'afnm01', 'afrp01', 'afgh01',
-          'afky01', 'agmn02', 'afmn01', 'afnd01', 'afqd01', 'diat01',
-          'aflu01', 'afat01', 'afbd01', 'afbh01', 'afds01', 'afda01',
-          'afdf01', 'afdh01', 'afdn01', 'afdy01', 'afek01', 'afhb01',
-          'afhi01', 'afhp01', 'afhg01', 'afhh01', 'afhs01', 'afih01',
-          'afik01', 'afld01', 'aflf01', 'afpe01', 'afpf01', 'afre01',
-          'afsu01', 'afuh01', 'afwh01', 'afyh01', 'afss01', 'afci01',
-          'afaw01', 'afaz01', 'afab01', 'afae01', 'afam01',
-          'afaf01', 'afbf01', 'afbi01', 'afbc01', 'afca01', 'afcd01',
-          'afcm01', 'afcy01', 'afdi01', 'afev01', 'afep01', 'afea01',
-          'afrr01', 'afem01', 'afnc01', 'afvw01', 'affc01', 'afht01',
-          'afhj01', 'afjn01', 'afjp01', 'afmt01', 'afmv01', 'afps01',
-          'afpr01', 'afph01', 'afst01', 'afte01', 'afce01', 'afti01',
-          'aftn01', 'afwc01', 'afwf01', 'afyp01', 'afrm01', 'affi01',
-          'afwi01', 'afta01', 'afop01', 'afmu01', 'afpb01', 'afth01',
-          'afsn01', 'afah01', 'afbe01', 'affo01', 'afpt01', 'afsp01',
-          'afis01', 'afbk01', 'afey01', 'afpw01', 'afen01', 'afcn01',
-          'afmc01', 'afsi01', 'afcf01', 'afer01', 'afbg01', 'afqg01',
-          'afdw01', 'afcs01', 'affa01', 'afto01', 'afrs01', 'affd01',
-          'afcl01', 'afbm01', 'afww01', 'aftu01', 'afmp01', 'afmy01',
-          'aful01', 'afot01', 'afal01', 'afuk01', 'afla01', 'afdv01',
-          'affn01', 'affl01', 'afsh01', 'afon01', 'afdo01', 'afwo01',
-          'aflc01', 'afym01', 'dinm01', 'afcc01', 'aflz01',
-          'emus01', 'aglm01'
-          ) then 'Project Dandelion'
-    end ;;
+    case when ${looker_dandelion_codes.source_code} is not null then 'Project Dandelion' end;;
     full_suggestions: yes
   }
 
