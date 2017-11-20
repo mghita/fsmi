@@ -229,7 +229,47 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.SOURCE ;;
   }
 
-  set: detail {
+  dimension: initial_opened {
+    type: string
+    sql: ${TABLE}.INITIAL_OPENED ;;
+  }
+
+  dimension: fup_opened {
+    type: string
+    sql: ${TABLE}.FUP_OPENED ;;
+  }
+
+  dimension: initial_clicked {
+    type: string
+    sql: ${TABLE}.INITIAL_CLICKED ;;
+  }
+
+  dimension: fup_clicked {
+    type: string
+    sql: ${TABLE}.FUP_CLICKED ;;
+  }
+
+  dimension: initial_unsubscribed {
+    type: string
+    sql: ${TABLE}.INITIAL_UNSUBSCRIBED ;;
+  }
+
+  dimension: fup_unsubscribed {
+    type: string
+    sql: ${TABLE}.FUP_UNSUBSCRIBED ;;
+  }
+
+  dimension: initial_complaint {
+    type: string
+    sql: ${TABLE}.INITIAL_COMPLAINT ;;
+  }
+
+  dimension: fup_complaint {
+    type: string
+    sql: ${TABLE}.FUP_COMPLAINT ;;
+  }
+
+    set: detail {
     fields: [
       campaign_code,
       contact_date,
