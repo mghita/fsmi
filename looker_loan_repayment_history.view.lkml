@@ -176,6 +176,21 @@ view: looker_loan_repayment_history {
     sql: 'Payment '||${TABLE}.PAYMENTNUMBER ;;
   }
 
+  dimension: riskscoretier {
+    type: string
+    sql: ${TABLE}.RISKSCORETIER ;;
+  }
+
+  dimension: riskbandtier {
+    type: string
+    sql: ${TABLE}.RISKBANDTIER ;;
+  }
+
+  dimension: loanamounttier {
+    type: string
+    sql: ${TABLE}.LOANAMOUNTTIER ;;
+  }
+
   dimension: expected_payments_made {
     type: number
     sql: ${TABLE}.EXPECTED_PAYMENTS_MADE;;

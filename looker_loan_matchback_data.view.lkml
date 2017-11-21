@@ -229,6 +229,66 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.SOURCE ;;
   }
 
+  measure: initial_opened {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_OPENED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: fup_opened {
+    type: sum
+    sql: case when ${TABLE}.FUP_OPENED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: opened {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_OPENED = 'Y' or ${TABLE}.FUP_OPENED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: initial_clicked {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_CLICKED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: fup_clicked {
+    type: sum
+    sql: case when ${TABLE}.FUP_CLICKED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: clicked {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_CLICKED = 'Y' or ${TABLE}.FUP_CLICKED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: initial_unsubscribed {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: fup_unsubscribed {
+    type: sum
+    sql: case when  ${TABLE}.INITIAL_UNSUBSCRIBED = 'Y' or ${TABLE}.FUP_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: unsubscribed {
+    type: sum
+    sql: case when ${TABLE}.FUP_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+  }
+
+  measure: initial_complaint {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_COMPLAINT = 'Y' then 1 else 0 end;;
+  }
+
+  measure: fup_complaint {
+    type: sum
+    sql: case when ${TABLE}.FUP_COMPLAINT = 'Y' then 1 else 0 end;;
+  }
+
+  measure: complaint {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_COMPLAINT = 'Y' or ${TABLE}.FUP_COMPLAINT = 'Y' then 1 else 0 end;;
+  }
+
   set: detail {
     fields: [
       campaign_code,
