@@ -229,44 +229,44 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.SOURCE ;;
   }
 
-  dimension: initial_opened {
-    type: string
-    sql: ${TABLE}.INITIAL_OPENED ;;
+  measure: initial_opened {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_OPENED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: fup_opened {
-    type: string
-    sql: ${TABLE}.FUP_OPENED ;;
+  measure: fup_opened {
+    type: sum
+    sql: case when ${TABLE}.FUP_OPENED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: initial_clicked {
-    type: string
-    sql: ${TABLE}.INITIAL_CLICKED ;;
+  measure: initial_clicked {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_CLICKED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: fup_clicked {
-    type: string
-    sql: ${TABLE}.FUP_CLICKED ;;
+  measure: fup_clicked {
+    type: sum
+    sql: case when ${TABLE}.FUP_CLICKED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: initial_unsubscribed {
-    type: string
-    sql: ${TABLE}.INITIAL_UNSUBSCRIBED ;;
+  measure: initial_unsubscribed {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: fup_unsubscribed {
-    type: string
-    sql: ${TABLE}.FUP_UNSUBSCRIBED ;;
+  measure: fup_unsubscribed {
+    type: sum
+    sql: case when ${TABLE}.FUP_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
   }
 
-  dimension: initial_complaint {
-    type: string
-    sql: ${TABLE}.INITIAL_COMPLAINT ;;
+  measure: initial_complaint {
+    type: sum
+    sql: case when ${TABLE}.INITIAL_COMPLAINT = 'Y' then 1 else 0 end;;
   }
 
-  dimension: fup_complaint {
-    type: string
-    sql: ${TABLE}.FUP_COMPLAINT ;;
+  measure: fup_complaint {
+    type: sum
+    sql: case when ${TABLE}.FUP_COMPLAINT = 'Y' then 1 else 0 end;;
   }
 
     set: detail {
