@@ -25,6 +25,13 @@ view: looker_mortgage_data {
     sql: ${TABLE}.STATUS ;;
   }
 
+  dimension: enquirydate {
+    type: date
+    sql: ${TABLE}.ENQUIRYDATE ;;
+  }
+
+
+
   dimension: cancelreason {
     type: string
     sql: ${TABLE}.CANCELREASON ;;
