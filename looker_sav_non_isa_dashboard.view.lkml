@@ -80,7 +80,10 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.BALANCE ;;
   }
 
-
+  dimension: member_flag {
+    type: string
+    sql: ${TABLE}.MEMBER_FLAG ;;
+  }
 
   set: detail {
     fields: [
@@ -90,7 +93,8 @@ view: looker_sav_non_isa_dashboard {
       source,
       account_status,
       itocode,
-      balance
+      balance,
+      member_flag
 
     ]
   }
