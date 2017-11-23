@@ -119,6 +119,16 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.FOLLOW_UP_FLAG ;;
   }
 
+  measure: follow_up_volume {
+    type: sum
+    sql: case when ${TABLE}.FOLLOW_UP_FLAG = 'Follow Up' then 1 else 0 end;;
+  }
+
+  measure: no_follow_up_volume {
+    type: sum
+    sql: case when ${TABLE}.FOLLOW_UP_FLAG = 'No Follow Up' then 1 else 0 end;;
+  }
+
   dimension: application_id {
     type: string
     sql: ${TABLE}.APPLICATION_ID ;;
@@ -231,62 +241,62 @@ view: looker_loan_matchback_data {
 
   measure: initial_opened {
     type: sum
-    sql: case when ${TABLE}.INITIAL_OPENED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.INITIAL_OPENED;;
   }
 
   measure: fup_opened {
     type: sum
-    sql: case when ${TABLE}.FUP_OPENED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.FUP_OPENED;;
   }
 
   measure: opened {
     type: sum
-    sql: case when ${TABLE}.INITIAL_OPENED = 'Y' or ${TABLE}.FUP_OPENED = 'Y' then 1 else 0 end;;
+    sql: case when ${TABLE}.INITIAL_OPENED = 1 or ${TABLE}.FUP_OPENED = 1 then 1 else 0 end;;
   }
 
   measure: initial_clicked {
     type: sum
-    sql: case when ${TABLE}.INITIAL_CLICKED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.INITIAL_CLICKED;;
   }
 
   measure: fup_clicked {
     type: sum
-    sql: case when ${TABLE}.FUP_CLICKED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.FUP_CLICKED;;
   }
 
   measure: clicked {
     type: sum
-    sql: case when ${TABLE}.INITIAL_CLICKED = 'Y' or ${TABLE}.FUP_CLICKED = 'Y' then 1 else 0 end;;
+    sql: case when ${TABLE}.INITIAL_CLICKED = 1 or ${TABLE}.FUP_CLICKED = 1 then 1 else 0 end;;
   }
 
   measure: initial_unsubscribed {
     type: sum
-    sql: case when ${TABLE}.INITIAL_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.INITIAL_UNSUBSCRIBED;;
   }
 
   measure: fup_unsubscribed {
     type: sum
-    sql: case when  ${TABLE}.INITIAL_UNSUBSCRIBED = 'Y' or ${TABLE}.FUP_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.FUP_UNSUBSCRIBED;;
   }
 
   measure: unsubscribed {
     type: sum
-    sql: case when ${TABLE}.FUP_UNSUBSCRIBED = 'Y' then 1 else 0 end;;
+    sql: case when ${TABLE}.INITIAL_UNSUBSCRIBED = 1 or ${TABLE}.FUP_UNSUBSCRIBED = 1 then 1 else 0 end;;
   }
 
   measure: initial_complaint {
     type: sum
-    sql: case when ${TABLE}.INITIAL_COMPLAINT = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.INITIAL_COMPLAINT;;
   }
 
   measure: fup_complaint {
     type: sum
-    sql: case when ${TABLE}.FUP_COMPLAINT = 'Y' then 1 else 0 end;;
+    sql: ${TABLE}.FUP_COMPLAINT;;
   }
 
   measure: complaint {
     type: sum
-    sql: case when ${TABLE}.INITIAL_COMPLAINT = 'Y' or ${TABLE}.FUP_COMPLAINT = 'Y' then 1 else 0 end;;
+    sql: case when ${TABLE}.INITIAL_COMPLAINT = 1 or ${TABLE}.FUP_COMPLAINT = 1 then 1 else 0 end;;
   }
 
   set: detail {
