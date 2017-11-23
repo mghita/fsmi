@@ -132,6 +132,7 @@ view: looker_mortgage_data {
       cust_type,
       app_sale_dt_diff,
       app_status_dt_diff,
+      dt_diff_appreceived_today,
       tot_loan_amt
     ]
   }
