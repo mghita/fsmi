@@ -105,6 +105,11 @@ view: looker_mortgage_data {
     sql: ${TABLE}.APP_STATUS_DT_DIFF ;;
   }
 
+  dimension: dt_diff_appreceived_today {
+    type: string
+    sql: ${TABLE}.DT_DIFF ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
