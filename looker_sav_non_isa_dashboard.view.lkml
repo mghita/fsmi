@@ -13,6 +13,11 @@ view: looker_sav_non_isa_dashboard {
     sql: ${balance};;
   }
 
+  measure: avg_balance_per_acc {
+    type: number
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${sav_balance}/NULLIF(${count},0);;
+  }
 
   dimension: account_number {
     type: string

@@ -25,6 +25,20 @@ view: looker_mortgage_data {
     sql: ${TABLE}.STATUS ;;
   }
 
+  dimension_group: enquire_dt {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.ENQUIRYDATE ;;
+  }
+
+  dimension_group: extract_dt {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.EXTRACTDATE ;;
+  }
+
   dimension: cancelreason {
     type: string
     sql: ${TABLE}.CANCELREASON ;;
