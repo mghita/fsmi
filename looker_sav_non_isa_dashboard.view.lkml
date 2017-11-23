@@ -29,6 +29,11 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.SAV_PRODUCT ;;
   }
 
+  dimension: subproductname {
+    type: string
+    sql: ${TABLE}.SUBPRODUCTNAME ;;
+  }
+
   dimension: medium {
     type: string
     sql: ${TABLE}.MEDIUM ;;
