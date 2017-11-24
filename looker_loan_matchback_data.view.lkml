@@ -50,17 +50,17 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.CAMPAIGN_CODE ;;
   }
 
-  dimension: days_to_follow_up {
+  measure: days_to_follow_up {
     type: number
-    sql: ${TABLE}.DAYS_TO_FOLLOW_UP;;
+    sql: ${TABLE}.LAST_COMMUNICATION_DATE-${TABLE}.FIRST_COMMUNICATION_DATE;;
   }
 
-  dimension: days_between_comms_and_app {
+  measure: days_between_comms_and_app {
     type: number
-    sql: to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.COMMUNICATION_DATE);;
+    sql: to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE);;
   }
 
-  dimension: days_between_comms_and_app_grouped {
+  measure: days_between_comms_and_app_grouped {
     type: string
     sql:
       case when ${days_between_comms_and_app} between 0 and 10 then '1. Within 10 days'
@@ -73,7 +73,7 @@ view: looker_loan_matchback_data {
     ;;
   }
 
-  dimension: app_pre_or_post_follow_up {
+  measure: app_pre_or_post_follow_up {
     type: string
     sql:
       case when ${follow_up_flag} = 'No Follow Up' then ${follow_up_flag}
@@ -91,7 +91,7 @@ view: looker_loan_matchback_data {
 
   dimension: communication_date {
     type: date
-    sql: ${TABLE}.COMMUNICATION_DATE ;;
+    sql: ${TABLE}.FIRST_COMMUNICATION_DATE ;;
   }
 
   dimension: offer_code {
