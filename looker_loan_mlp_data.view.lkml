@@ -70,9 +70,12 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.LOAN_APR ;;
   }
 
-  dimension: loan_tier {
-    type: string
-    sql: ${TABLE}.LOAN_TIER ;;
+  dimension: loan_tier
+  {type:tier
+    tiers: [1000,3000,5000,7500,15000,25000]
+    style:integer
+    sql:loan_amount_applied;;
+    value_format: "\"£\"#,##0.0,\"K\""
   }
 
   dimension: loan_term_tier {
