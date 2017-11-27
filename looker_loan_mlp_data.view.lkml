@@ -23,6 +23,11 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.ALL_CHANNELS_MLP_FLAG ;;
   }
 
+  dimension: any_mlp_flag {
+    type: string
+    sql: ${TABLE}.ANY_MLP_FLAG ;;
+  }
+
   dimension: application_id {
     type: string
     sql: ${TABLE}.APPLICATION_ID ;;
