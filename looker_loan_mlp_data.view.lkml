@@ -6,6 +6,13 @@ view: looker_loan_mlp_data {
     drill_fields: [detail*]
   }
 
+  measure: avg_amount {
+    type: average
+    value_format: "\"£\"#,##0.0,\" K\""
+    drill_fields: [detail*]
+    sql: ${TABLE}.LOAN_AMOUNT_APPLIED;;
+  }
+
   dimension: msm_mlp_flag {
     type: string
     sql: ${TABLE}.MSM_MLP_FLAG ;;
@@ -21,12 +28,34 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.APPLICATION_ID ;;
   }
 
-  dimension: loan_amount_applied {
+  dimension_group: application {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATION_DATE ;;
+  }
+
+  dimension: group {
     type: string
+    sql: ${TABLE}.MEDIUM ;;
+  }
+
+  dimension: MSM_group {
+    type: string
+    sql: case when ${TABLE}.SOURCE = 'Moneysupermarket' then  ${TABLE}.SOURCE else 'Other Aggregators' end;;
+  }
+
+  dimension: source {
+    type: string
+    sql: ${TABLE}.SOURCE ;;
+  }
+
+  measure: loan_amount_applied {
+    type: sum
     sql: ${TABLE}.LOAN_AMOUNT_APPLIED ;;
   }
 
-  dimension: loan_term_application {
+  measure: loan_term_application {
     type: string
     sql: ${TABLE}.LOAN_TERM_APPLICATION ;;
   }
@@ -61,8 +90,8 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.FINAL_DECISION ;;
   }
 
-  dimension: loan_amount_agreed {
-    type: string
+  measure: loan_amount_agreed {
+    type: sum
     sql: ${TABLE}.LOAN_AMOUNT_AGREED ;;
   }
 
@@ -71,23 +100,23 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.LOAN_TERM_AGREED ;;
   }
 
-  dimension: weighted_apr_at_application {
-    type: string
+  measure: weighted_apr_at_application {
+    type: sum
     sql: ${TABLE}.WEIGHTED_APR_AT_APPLICATION ;;
   }
 
-  dimension: weighted_apr_final {
-    type: string
+  measure: weighted_apr_final {
+    type: sum
     sql: ${TABLE}.WEIGHTED_APR_FINAL ;;
   }
 
-  dimension: weighted_loan_term_application {
-    type: string
+  measure: weighted_loan_term_application {
+    type: sum
     sql: ${TABLE}.WEIGHTED_LOAN_TERM_APPLICATION ;;
   }
 
-  dimension: weighted_loan_term_final {
-    type: string
+  measure: weighted_loan_term_final {
+    type: sum
     sql: ${TABLE}.WEIGHTED_LOAN_TERM_FINAL ;;
   }
 
