@@ -13,6 +13,12 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.LOAN_AMOUNT_APPLIED;;
   }
 
+  measure: weighted_avg_APR_at_application
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.weighted_APR_at_application)/sum(${TABLE}.loan_amount_applied);;
+  }
+
   dimension: msm_mlp_flag {
     type: string
     sql: ${TABLE}.MSM_MLP_FLAG ;;
