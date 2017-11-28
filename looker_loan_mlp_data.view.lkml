@@ -18,6 +18,11 @@ view: looker_loan_mlp_data {
     sql: ${TABLE}.MSM_MLP_FLAG ;;
   }
 
+  dimension: email_mlp_flag {
+    type: string
+    sql: ${TABLE}.EMAIL_MLP_FLAG ;;
+  }
+
   dimension: all_channels_mlp_flag {
     type: string
     sql: ${TABLE}.ALL_CHANNELS_MLP_FLAG ;;
