@@ -45,33 +45,35 @@ view: looker_loan_matchback_data {
     value_format: "0.00\%"
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_accepted_apps},0);;
   }
+
   dimension: campaign_code {
     type: string
     sql: ${TABLE}.CAMPAIGN_CODE ;;
   }
 
-  measure: days_to_follow_up {
+  dimension: days_to_follow_up {
     type: number
     sql: ${TABLE}.LAST_COMMUNICATION_DATE-${TABLE}.FIRST_COMMUNICATION_DATE;;
   }
 
-  measure: days_between_comms_and_app {
+  dimension: days_between_comms_and_app {
     type: number
     sql: to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE);;
   }
 
-  measure: days_between_comms_and_app_grouped {
+  dimension: days_between_comms_and_app_grouped {
     type: string
     sql:
-      case when ${days_between_comms_and_app} between 0 and 10 then '1. Within 10 days'
-        when ${days_between_comms_and_app} between 11 and 20 then '2. Between 11 and 20 days after'
-        when ${days_between_comms_and_app} between 21 and 30 then '3. Between 21 and 30 days after'
-        when ${days_between_comms_and_app} between 31 and 40 then '4. Between 31 and 40 days after'
-        when ${days_between_comms_and_app} between 41 and 50 then '5. Between 41 and 50 days after'
-        when ${days_between_comms_and_app} between 51 and 60 then '6. Between 51 and 60 days after'
+      case when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 0 and 10 then '1. Within 10 days'
+        when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 11 and 20 then '2. Between 11 and 20 days after'
+        when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 21 and 30 then '3. Between 21 and 30 days after'
+        when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 31 and 40 then '4. Between 31 and 40 days after'
+        when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 41 and 50 then '5. Between 41 and 50 days after'
+        when to_date(${TABLE}.APPLICATION_DATE) - to_date(${TABLE}.FIRST_COMMUNICATION_DATE) between 51 and 60 then '6. Between 51 and 60 days after'
       end
     ;;
   }
+
 
   measure: app_pre_or_post_follow_up {
     type: string
