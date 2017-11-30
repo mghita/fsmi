@@ -115,6 +115,11 @@ view: looker_mortgage_data {
     sql: ${TABLE}.TOT_LOAN_AMT ;;
   }
 
+  dimension: rate {
+    type: string
+    sql: ${TABLE}.RATE ;;
+  }
+
   set: detail {
     fields: [
       accnumber,
@@ -133,7 +138,8 @@ view: looker_mortgage_data {
       app_sale_dt_diff,
       app_status_dt_diff,
       dt_diff_appreceived_today,
-      tot_loan_amt
+      tot_loan_amt,
+      rate
     ]
   }
 }
