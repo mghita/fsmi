@@ -111,8 +111,7 @@ view: looker_mortgage_data {
   }
 
   dimension: rate {
-    type: number
-    value_format: "0.0\%"
+    type: string
     sql: ${TABLE}.RATE ;;
   }
 
