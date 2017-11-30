@@ -113,7 +113,7 @@ view: looker_mortgage_data {
   dimension: rate {
     type: number
     value_format: "0.00\%"
-    sql: ${TABLE}.RATE ;;
+    sql: 100.0*${TABLE}.RATE ;;
   }
 
   dimension: tot_loan_amt {
