@@ -35,6 +35,13 @@ view: looker_mortgage_data {
     filters: {field:status value: "2.Offered"}
   }
 
+  measure: avg_day_to_received {
+    type: average
+    sql: ${TABLE}.DT_ENQ_RECEIVED;;
+    value_format: "0"
+    filters: {field:status value: "3.Application Received"}
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
@@ -146,6 +153,11 @@ view: looker_mortgage_data {
     sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED ;;
   }
 
+  dimension: dt_enq_received  {
+    type: string
+    sql: ${TABLE}.DT_ENQ_RECEIVED ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
@@ -173,6 +185,7 @@ view: looker_mortgage_data {
       rate,
       dt_sale_received,
       dt_stat_change_received,
+      dt_enq_received,
       tot_loan_amt
     ]
   }
