@@ -122,6 +122,16 @@ view: looker_mortgage_data {
     sql: 100.0*${TABLE}.RATE ;;
   }
 
+  dimension: dt_sale_received {
+    type: string
+    sql: ${TABLE}.DT_SALE_RECEIVED ;;
+  }
+
+  dimension: dt_stat_change_received {
+    type: string
+    sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
@@ -147,6 +157,8 @@ view: looker_mortgage_data {
       app_status_dt_diff,
       dt_diff_appreceived_today,
       rate,
+      dt_sale_received,
+      dt_stat_change_received,
       tot_loan_amt
     ]
   }
