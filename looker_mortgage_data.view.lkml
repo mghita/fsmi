@@ -28,6 +28,13 @@ view: looker_mortgage_data {
     filters: {field:status value: "1.Completion"}
   }
 
+  measure: avg_day_to_offer {
+    type: average
+    sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED;;
+    value_format: "0"
+    filters: {field:status value: "2.Offered"}
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
