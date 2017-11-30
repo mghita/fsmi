@@ -158,6 +158,11 @@ view: looker_mortgage_data {
     sql: ${TABLE}.DT_ENQ_RECEIVED ;;
   }
 
+  dimension: member_flag  {
+    type: string
+    sql: ${TABLE}.MEMBER_FLAG ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
@@ -186,6 +191,7 @@ view: looker_mortgage_data {
       dt_sale_received,
       dt_stat_change_received,
       dt_enq_received,
+      member_flag,
       tot_loan_amt
     ]
   }
