@@ -21,6 +21,12 @@ view: looker_mortgage_data {
     sql: ${total_loan_amount}/${count};;
   }
 
+  measure: avg_day_to_sale {
+    type: average
+    sql: ${TABLE}.DT_SALE_RECEIVED;;
+    filters: {field:status value: "1.Completion"}
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
