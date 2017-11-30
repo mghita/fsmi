@@ -24,7 +24,7 @@ view: looker_mortgage_data {
   measure: avg_day_to_sale {
     type: average
     sql: ${TABLE}.DT_SALE_RECEIVED;;
-    value_format: "0.0"
+    value_format: "0"
     filters: {field:status value: "1.Completion"}
   }
 
