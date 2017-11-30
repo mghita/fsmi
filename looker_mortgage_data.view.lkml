@@ -15,6 +15,12 @@ view: looker_mortgage_data {
     sql: ${tot_loan_amt};;
   }
 
+  measure: avg_loan_amount {
+    type: number
+    value_format: "\"£\"#,##0.0,\" K\""
+    sql: sum(${TABLE}.tot_loan_amt)/sum(${TABLE}.accnumber);;
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
