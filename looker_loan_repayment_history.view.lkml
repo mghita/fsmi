@@ -1,5 +1,5 @@
 view: looker_loan_repayment_history {
-  sql_table_name: BOIFS.LOOKER_LOAN_REPAYMENT_HISTORY ;;
+  sql_table_name: BOIFS.LOOKER_LOAN_REPAYMENT_ANALYSIS;;
 
   dimension: primary_key {
     primary_key: yes
@@ -81,7 +81,7 @@ view: looker_loan_repayment_history {
     type: number
     value_format: "0.0\%"
     sql: 100*${total_expected_gross_balance}/NULLIF(${total_initial_gross_balance},0) ;;
-    }
+  }
 
   measure: actual_gross_balance_outstanding_pct {
     type: number
@@ -111,6 +111,25 @@ view: looker_loan_repayment_history {
     value_format: "0.0\%"
     sql: 100*${total_expected_gross_balance}/NULLIF(${outstanding_gross_balance},0)-100;;
   }
+
+  measure: contractual_repayment_paid {
+    type: number
+    value_format: "0.0\%"
+    sql: 100*sum(${TABLE}.contractual_repayment_paid)/NULLIF(${total_initial_net_balance},0)  ;;
+  }
+
+  measure: early_settlement_paid {
+    type: number
+    value_format: "0.0\%"
+    sql: 100*sum(${TABLE}.early_settlement_paid)/NULLIF(${total_initial_net_balance},0)  ;;
+  }
+
+  measure: overpayment_paid {
+    type: number
+    value_format: "0.0\%"
+    sql: 100*sum(${TABLE}.overpayment_paid)/NULLIF(${total_initial_net_balance},0);;
+  }
+
 
   dimension: drawdown_lt_reporting_mth {
     type:  string
