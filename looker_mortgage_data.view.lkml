@@ -23,12 +23,14 @@ view: looker_mortgage_data {
 
   measure: avg_loan_amount {
     type: number
+    drill_fields: [detail*]
     value_format: "\"£\"#,##0.0,\" K\""
     sql: ${total_loan_amount}/${count};;
   }
 
   measure: avg_day_to_sale {
     type: average
+    drill_fields: [detail*]
     sql: ${TABLE}.DT_SALE_RECEIVED;;
     value_format: "0"
     filters: {field:status value: "1.Completion"}
@@ -36,6 +38,7 @@ view: looker_mortgage_data {
 
   measure: avg_day_to_offer {
     type: average
+    drill_fields: [detail*]
     sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED;;
     value_format: "0"
     filters: {field:status value: "2.Offered"}
@@ -43,6 +46,7 @@ view: looker_mortgage_data {
 
   measure: avg_day_to_received {
     type: average
+    drill_fields: [detail*]
     sql: ${TABLE}.DT_ENQ_RECEIVED;;
     value_format: "0"
     filters: {field:status value: "3.Application Received"}
