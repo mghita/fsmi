@@ -9,12 +9,14 @@ view: looker_sav_non_isa_dashboard {
 
   measure: sav_balance {
     type: sum
+    drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${balance};;
   }
 
   measure: avg_balance_per_acc {
     type: number
+    drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${sav_balance}/NULLIF(${count},0);;
   }
