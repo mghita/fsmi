@@ -15,7 +15,8 @@ view: looker_loan_repayment_history {
   measure: count_active {
     type: count
     filters: {field: monthendnetbalance  value: "> 0"}
-  }
+    filters: {field: payment_number_numeric  value: ">= 1"}
+    }
 
   measure: count_active_first_month {
     type: count
@@ -115,7 +116,18 @@ view: looker_loan_repayment_history {
   measure: contractual_repayment_paid {
     type: number
     value_format: "0.0\%"
-    sql: 100*sum(${TABLE}.contractual_repayment_paid)/NULLIF(${total_initial_net_balance},0)  ;;
+    sql: 100*sum(${TABLE}.total_actual_payment)/NULLIF(${total_initial_net_balance},0)  ;;
+  }
+
+
+  measure: total {
+    type: number
+    sql: case when  ${actual_net_balance_outstanding_pct}+coalesce(${overpayment_paid},0)+coalesce(${early_settlement_paid},0) <> ${expected_net_balance_outstanding_pct} then 1 else 0 end;;
+  }
+
+  measure: total_amt {
+    type: number
+    sql: ${TABLE}.monthendnetbalance+coalesce(${TABLE}.overpayment_paid,0)+coalesce(${TABLE}.early_settlement_paid,0);;
   }
 
   measure: early_settlement_paid {
@@ -130,6 +142,11 @@ view: looker_loan_repayment_history {
     sql: 100*sum(${TABLE}.overpayment_paid)/NULLIF(${total_initial_net_balance},0);;
   }
 
+  measure: error_net_balance_outstanding {
+    type: number
+    value_format: "0.0\%"
+    sql: 100*sum(${TABLE}.error_net_balance_outstanding)/NULLIF(${total_initial_net_balance},0);;
+  }
 
   dimension: drawdown_lt_reporting_mth {
     type:  string
