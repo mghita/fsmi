@@ -80,6 +80,12 @@ view: looker_mortgage_data {
     sql: sum(${TABLE}.product_fee)/(sum(${TABLE}.term_length)*sum(${TABLE}.tot_loan_amt)) + sum(${TABLE}.rate);;
   }
 
+  measure: blended_rate_measure2
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.blended_rate)*${TABLE}.tot_loan_amt)/sum(${TABLE}.tot_loan_amt);;
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
