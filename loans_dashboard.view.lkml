@@ -32,7 +32,7 @@ view:  loans_dashboard
   dimension: loan_amount_applied_band
   {type:tier
     tiers: [1000,3000,5000,7500,15000,20000,25000]
-    style:relational
+    style:integer
     sql:loan_amount_applied;;
   }
 
@@ -43,7 +43,7 @@ view:  loans_dashboard
   dimension: loan_term_application_band
   {type:tier
     tiers: [12,18,24,30,36,42,48,54,60,66,72,78,84]
-    style:interval
+    style:integer
     sql:loan_term_application;;
   }
 
@@ -53,7 +53,7 @@ view:  loans_dashboard
   dimension: loan_amount_agreed_band
   {type:tier
     tiers: [1000,3000,5000,7500,15000,20000,25000]
-    style:interval
+    style:integer
     sql:loan_amount_agreed;;
   }
 
@@ -63,7 +63,7 @@ view:  loans_dashboard
   dimension: loan_term_agreed_band
   {type:tier
     tiers: [12,18,24,30,36,42,48,54,60,66,72,78,84]
-    style:interval
+    style:integer
     sql:loan_term_agreed;;
   }
 
