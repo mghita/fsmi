@@ -178,6 +178,12 @@ view: looker_mortgage_data {
     sql: ${TABLE}.MEMBER_FLAG ;;
   }
 
+  dimension: blended_rate {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.RATE ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
@@ -208,6 +214,7 @@ view: looker_mortgage_data {
       dt_stat_change_received,
       dt_enq_received,
       member_flag,
+      blended_rate,
       tot_loan_amt
     ]
   }
