@@ -168,9 +168,9 @@ view: looker_mortgage_data {
     sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED ;;
   }
 
-  dimension: dt_enq_received  {
+  dimension: dt_received_to_today  {
     type: string
-    sql: ${TABLE}.DT_ENQ_RECEIVED ;;
+    sql: ${TABLE}.dt_received_to_today ;;
   }
 
   dimension: member_flag  {
@@ -212,7 +212,7 @@ view: looker_mortgage_data {
       rate,
       dt_sale_received,
       dt_stat_change_received,
-      dt_enq_received,
+      dt_received_to_today,
       member_flag,
       blended_rate,
       tot_loan_amt
