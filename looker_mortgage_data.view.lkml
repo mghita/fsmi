@@ -1,5 +1,5 @@
 view: looker_mortgage_data {
-  sql_table_name: BOIFS.LOOKER_HM_TEST ;;
+  sql_table_name: BOIFS.LOOKER_MORTGAGE ;;
 
 
   measure: count {
@@ -47,9 +47,37 @@ view: looker_mortgage_data {
   measure: avg_day_to_received {
     type: average
     drill_fields: [detail*]
-    sql: ${TABLE}.DT_ENQ_RECEIVED;;
+    sql: ${TABLE}.dt_received_to_today;;
     value_format: "0"
     filters: {field:status value: "3.Application Received"}
+  }
+
+  measure: avg_day_to_not_proceed {
+    type: average
+    drill_fields: [detail*]
+    sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED;;
+    value_format: "0"
+    filters: {field:status value: "4.Not Proceeding"}
+  }
+
+  measure: avg_day_stat_change {
+    type: average
+    drill_fields: [detail*]
+    sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED;;
+    value_format: "0"
+  }
+
+  measure: Week {
+    type: date
+    drill_fields: [detail*]
+    sql: ${TABLE}.extractdate;;
+  }
+
+
+  measure: blended_rate_measure
+  {type: number
+    value_format: "0.0"
+    sql: (${product_fee}/${term_length}*${loanamount}) + ${rate};;
   }
 
   dimension: accnumber {
@@ -168,14 +196,20 @@ view: looker_mortgage_data {
     sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED ;;
   }
 
-  dimension: dt_enq_received  {
+  dimension: dt_received_to_today  {
     type: string
-    sql: ${TABLE}.DT_ENQ_RECEIVED ;;
+    sql: ${TABLE}.dt_received_to_today ;;
   }
 
   dimension: member_flag  {
     type: string
     sql: ${TABLE}.MEMBER_FLAG ;;
+  }
+
+  dimension: blended_rate {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.RATE ;;
   }
 
   dimension: tot_loan_amt {
@@ -206,8 +240,9 @@ view: looker_mortgage_data {
       rate,
       dt_sale_received,
       dt_stat_change_received,
-      dt_enq_received,
+      dt_received_to_today,
       member_flag,
+      blended_rate,
       tot_loan_amt
     ]
   }
