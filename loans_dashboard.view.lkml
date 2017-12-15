@@ -34,6 +34,7 @@ view:  loans_dashboard
     tiers: [1000,3000,5000,7500,15000,20000,25000]
     style:integer
     sql:loan_amount_applied;;
+    value_format: "\"£\"#,##0.0,\"K\""
   }
 
   dimension: loan_term_application
@@ -55,6 +56,8 @@ view:  loans_dashboard
     tiers: [1000,3000,5000,7500,15000,20000,25000]
     style:integer
     sql:loan_amount_agreed;;
+    value_format: "\"£\"#,##0.0,\"K\""
+    full_suggestions: yes
   }
 
   dimension: loan_term_agreed
@@ -68,13 +71,15 @@ view:  loans_dashboard
   }
 
   dimension: loan_APR
-  {sql: ${TABLE}.loan_APR;;}
+  {type:  number
+    sql: ${TABLE}.loan_APR;;}
 
   dimension: loan_APR_band
   {type:tier
     tiers: [5,10,15,20,25]
     style:integer
     sql:loan_APR;;
+    value_format: "0.0\%"
   }
 
   dimension_group: application {
@@ -104,6 +109,24 @@ view:  loans_dashboard
     convert_tz: no
     sql: ${TABLE}.FINAL_DECISION_DATE ;;
   }
+
+  dimension: days
+  {type: string
+    sql: round(${TABLE}.APPLICATION_DECISION_DATE - ${TABLE}.APPLICATION_DATE)
+  ;;}
+
+
+  dimension: days_to_approval
+  {type: string
+    sql: case when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between -1 and 5 then '1. Less than 5'
+       when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between 5 and 10 then '2. Between 6 and 10'
+      when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between 10 and 20 then '3. Between 11 and 20'
+      when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between 20 and 30 then '4. Between 21 and 30'
+      when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) >= 30 then '5. Over 30 days'
+      when application_decision like '%Accept%' then 'Error'
+    else 'N/A'
+    end
+  ;;}
 
   dimension: application_decision
   {sql: ${TABLE}.APPLICATION_DECISION;;}
