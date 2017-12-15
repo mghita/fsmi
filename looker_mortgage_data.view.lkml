@@ -1,5 +1,5 @@
 view: looker_mortgage_data {
-  sql_table_name: BOIFS.LOOKER_HM_TEST ;;
+  sql_table_name: BOIFS.LOOKER_MORTGAGE ;;
 
 
   measure: count {
