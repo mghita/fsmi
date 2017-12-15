@@ -47,7 +47,7 @@ view: looker_mortgage_data {
   measure: avg_day_to_received {
     type: average
     drill_fields: [detail*]
-    sql: ${TABLE}.DT_ENQ_RECEIVED;;
+    sql: ${TABLE}.dt_received_to_today;;
     value_format: "0"
     filters: {field:status value: "3.Application Received"}
   }
