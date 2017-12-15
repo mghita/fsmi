@@ -67,6 +67,12 @@ view: looker_mortgage_data {
     value_format: "0"
   }
 
+  measure: Week {
+    type: date
+    drill_fields: [detail*]
+    sql: ${TABLE}.extractdate;;
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
