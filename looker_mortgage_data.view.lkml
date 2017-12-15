@@ -60,6 +60,13 @@ view: looker_mortgage_data {
     filters: {field:status value: "4.Not Proceeding"}
   }
 
+  measure: avg_day_stat_change {
+    type: average
+    drill_fields: [detail*]
+    sql: ${TABLE}.DT_STAT_CHANGE_RECEIVED;;
+    value_format: "0"
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
