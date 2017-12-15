@@ -82,7 +82,7 @@ view: looker_mortgage_data {
 
   measure: blended_rate_measure2
   {type: number
-    value_format: "0.0\%"
+    value_format: "0.00\%"
     sql: 100*(sum(${TABLE}.blended_rate*${TABLE}.tot_loan_amt)/sum(${TABLE}.tot_loan_amt));;
   }
 
