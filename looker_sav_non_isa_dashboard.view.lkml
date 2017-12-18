@@ -14,6 +14,20 @@ view: looker_sav_non_isa_dashboard {
     sql: ${balance};;
   }
 
+  measure: sav_balance_outflow {
+    type: sum
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${balance_outflow};;
+  }
+
+  measure: sav_balance_inflow {
+    type: sum
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${balance_inflow};;
+  }
+
   measure: avg_balance_per_acc {
     type: number
     drill_fields: [detail*]
@@ -87,9 +101,24 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.BALANCE ;;
   }
 
+  dimension: balance_outflow {
+    type: string
+    sql: ${TABLE}.BALANCE_OUTFLOW ;;
+  }
+
+  dimension: balance_inflow {
+    type: string
+    sql: ${TABLE}.BALANCE_INFLOW ;;
+  }
+
   dimension: member_flag {
     type: string
     sql: ${TABLE}.MEMBER_FLAG ;;
+  }
+
+  dimension: new_cust_flag {
+    type: string
+    sql: ${TABLE}.NEW_CUST_FLAG ;;
   }
 
   set: detail {
@@ -101,7 +130,10 @@ view: looker_sav_non_isa_dashboard {
       account_status,
       itocode,
       balance,
-      member_flag
+      balance_outflow,
+      balance_inflow,
+      member_flag,
+      new_cust_flag
 
     ]
   }
