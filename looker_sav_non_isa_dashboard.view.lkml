@@ -28,6 +28,28 @@ view: looker_sav_non_isa_dashboard {
     sql: ${balance_inflow};;
   }
 
+  measure: sav_pit_balance {
+    type: sum
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${pit_balance};;
+  }
+
+  measure: sav_pit_balance_outflow {
+    type: sum
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${pit_balance_outflow};;
+  }
+
+  measure: sav_pit_balance_inflow {
+    type: sum
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${pit_balance_inflow};;
+  }
+
+
   measure: avg_balance_per_acc {
     type: number
     drill_fields: [detail*]
@@ -111,6 +133,21 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.BALANCE_INFLOW ;;
   }
 
+  dimension: pit_balance {
+    type: string
+    sql: ${TABLE}.PIT_BALANCE ;;
+  }
+
+  dimension: pit_balance_outflow {
+    type: string
+    sql: ${TABLE}.PIT_BALANCE_OUTFLOW ;;
+  }
+
+  dimension: pit_balance_inflow {
+    type: string
+    sql: ${TABLE}.PIT_BALANCE_INFLOW ;;
+  }
+
   dimension: member_flag {
     type: string
     sql: ${TABLE}.MEMBER_FLAG ;;
@@ -132,6 +169,9 @@ view: looker_sav_non_isa_dashboard {
       balance,
       balance_outflow,
       balance_inflow,
+      pit_balance,
+      pit_balance_outflow,
+      pit_balance_inflow,
       member_flag,
       new_cust_flag
 
