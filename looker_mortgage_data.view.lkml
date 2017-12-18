@@ -212,6 +212,11 @@ view: looker_mortgage_data {
     sql: 100.0*${TABLE}.RATE ;;
   }
 
+  dimension: product_code  {
+    type: string
+    sql: ${TABLE}.PRODUCTTYPECODE ;;
+  }
+
   dimension: tot_loan_amt {
     type: string
     sql: ${TABLE}.TOT_LOAN_AMT ;;
@@ -243,6 +248,7 @@ view: looker_mortgage_data {
       dt_received_to_today,
       member_flag,
       blended_rate,
+      product_code,
       tot_loan_amt
     ]
   }
