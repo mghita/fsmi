@@ -112,12 +112,14 @@ view:  loans_dashboard
 
   dimension: days
   {type: string
-    sql: round(${TABLE}.APPLICATION_DECISION_DATE - ${TABLE}.APPLICATION_DATE)
+    hidden: yes
+    sql: round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE)
   ;;}
 
 
   dimension: days_to_approval
   {type: string
+    hidden: yes
     sql: case when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between -1 and 5 then '1. Less than 5'
        when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between 5 and 10 then '2. Between 6 and 10'
       when application_decision like '%Accept%' and round(coalesce(${TABLE}.APPLICATION_DECISION_DATE,${TABLE}.INIT_APPLICATION_DECISION_DT) - ${TABLE}.APPLICATION_DATE) between 10 and 20 then '3. Between 11 and 20'
