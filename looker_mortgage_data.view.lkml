@@ -8,12 +8,6 @@ view: looker_mortgage_data {
     sql: ${TABLE}.ACCNUMBER ;;
   }
 
-  measure: count_cust_key {
-    type: count_distinct
-    drill_fields: [detail*]
-    sql: ${TABLE}.CUSTOMER_KEY ;;
-  }
-
 
   measure: total_loan_amount {
     type: sum
@@ -83,11 +77,6 @@ view: looker_mortgage_data {
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
-  }
-
-  dimension: customer_key {
-    type: string
-    sql: ${TABLE}.customer_key ;;
   }
 
   dimension: status {
@@ -226,7 +215,6 @@ view: looker_mortgage_data {
   set: detail {
     fields: [
       accnumber,
-      customer_key,
       status,
       cancelreason,
       declinereason,
