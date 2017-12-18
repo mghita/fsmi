@@ -76,8 +76,8 @@ view: looker_mortgage_data {
 
   measure: blended_rate_measure
   {type: number
-    value_format: "0.0"
-    sql: (${product_fee}/${term_length}*${loanamount}) + ${rate};;
+    value_format: "0.00\%"
+    sql: 100*(sum(${TABLE}.blended_rate*${TABLE}.tot_loan_amt)/sum(${TABLE}.tot_loan_amt));;
   }
 
   dimension: accnumber {
