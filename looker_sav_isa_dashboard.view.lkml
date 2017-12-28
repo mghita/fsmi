@@ -44,23 +44,31 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.ENQUIRY_SOURCE_CHANNEL ;;
   }
 
-  dimension: extract_date {
-    type: date
+  dimension_group: extract_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.EXTRACT_DATE ;;
   }
 
-  dimension: application_date {
-    type: date
+  dimension_group: application_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.APPLICATION_DATE ;;
   }
 
-  dimension: product_start_date {
-    type: date
+  dimension_group: product_start_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.PRODUCT_START_DATE ;;
   }
 
-  dimension: term_end_date {
-    type: date
+  dimension_group: term_end_date {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.TERM_END_DATE ;;
   }
 
@@ -69,8 +77,10 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.MEMBER_FLAG ;;
   }
 
-  dimension: cont_dt {
-    type: date
+  dimension_group: cont_dt {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
     sql: ${TABLE}.CONT_DT ;;
   }
 
@@ -94,12 +104,7 @@ view: looker_sav_isa_dashboard {
       account_number,
       prod_code,
       enquiry_source_channel,
-      extract_date,
-      application_date,
-      product_start_date,
-      term_end_date,
       member_flag,
-      cont_dt,
       balance,
       pit_balance,
       cumulative_spend
