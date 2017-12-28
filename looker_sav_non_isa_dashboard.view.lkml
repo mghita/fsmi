@@ -53,7 +53,7 @@ view: looker_sav_non_isa_dashboard {
     type: sum
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${new_bal_acc_dt};;
+    sql: ${cumulative_spend};;
   }
 
   measure: avg_balance_per_acc {
@@ -154,11 +154,6 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.PIT_BALANCE_INFLOW ;;
   }
 
-  dimension: new_bal_acc_dt {
-    type: string
-    sql: ${TABLE}.NEW_BAL_ACC_DT ;;
-  }
-
   dimension: member_flag {
     type: string
     sql: ${TABLE}.MEMBER_FLAG ;;
@@ -168,6 +163,12 @@ view: looker_sav_non_isa_dashboard {
     type: string
     sql: ${TABLE}.NEW_CUST_FLAG ;;
   }
+
+  dimension: cumulative_spend {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND ;;
+  }
+
 
   set: detail {
     fields: [
@@ -183,9 +184,9 @@ view: looker_sav_non_isa_dashboard {
       pit_balance,
       pit_balance_outflow,
       pit_balance_inflow,
-      new_bal_acc_dt,
       member_flag,
-      new_cust_flag
+      new_cust_flag,
+      cumulative_spend
 
     ]
   }
