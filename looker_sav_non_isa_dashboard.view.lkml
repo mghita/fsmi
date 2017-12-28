@@ -50,7 +50,7 @@ view: looker_sav_non_isa_dashboard {
   }
 
   measure: sav_pit_bal_acc_dt {
-    type: sum
+    type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${cumulative_spend};;
