@@ -28,6 +28,12 @@ view: looker_sav_isa_dashboard {
     sql: ${cumulative_spend};;
   }
 
+  measure: avg_balance_per_acc {
+    type: number
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${sav_balance}/NULLIF(${count},0);;
+  }
 
   dimension: account_number {
     type: string
