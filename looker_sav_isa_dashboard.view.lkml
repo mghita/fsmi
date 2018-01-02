@@ -21,11 +21,18 @@ view: looker_sav_isa_dashboard {
     sql: ${pit_balance};;
   }
 
-  measure: sav_pit_bal_cont_dt {
+  measure: sav_pit_bal_cont_dt_term {
     type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${cumulative_spend};;
+    sql: ${cumulative_spend_term};;
+  }
+
+  measure: sav_pit_bal_cont_dt_prd {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_prd};;
   }
 
   measure: avg_balance_per_acc {
@@ -122,9 +129,14 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.PIT_BALANCE ;;
   }
 
-  dimension: cumulative_spend {
+  dimension: cumulative_spend_term {
     type: string
-    sql: ${TABLE}.CUMULATIVE_SPEND ;;
+    sql: ${TABLE}.CUMULATIVE_SPEND_TERM ;;
+  }
+
+  dimension: cumulative_spend_prd {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_PRD ;;
   }
 
   set: detail {
@@ -139,7 +151,8 @@ view: looker_sav_isa_dashboard {
       rate,
       bonus,
       pit_balance,
-      cumulative_spend
+      cumulative_spend_term,
+      cumulative_spend_prd
     ]
   }
 }
