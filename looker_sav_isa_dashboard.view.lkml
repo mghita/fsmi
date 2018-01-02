@@ -97,6 +97,11 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.CONT_DT ;;
   }
 
+  dimension: transfer_provider_name {
+    type: string
+    sql: ${TABLE}.TRANSFER_PROVIDER_NAME ;;
+  }
+
   dimension: fund_name {
     type: string
     sql: ${TABLE}.FUND_NAME ;;
@@ -146,6 +151,7 @@ view: looker_sav_isa_dashboard {
       enquiry_source_channel,
       member_flag,
       balance,
+      transfer_provider_name,
       fund_name,
       fixed_months,
       rate,
