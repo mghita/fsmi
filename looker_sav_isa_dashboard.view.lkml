@@ -90,6 +90,28 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.CONT_DT ;;
   }
 
+  dimension: fund_name {
+    type: string
+    sql: ${TABLE}.FUND_NAME ;;
+  }
+
+  dimension: fixed_months {
+    type: string
+    sql: ${TABLE}.FIXED_MONTHS ;;
+  }
+
+  dimension: rate {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.RATE ;;
+  }
+
+  dimension: bonus {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.BONUS ;;
+  }
+
   dimension: balance {
     type: string
     sql: ${TABLE}.BALANCE ;;
@@ -112,6 +134,10 @@ view: looker_sav_isa_dashboard {
       enquiry_source_channel,
       member_flag,
       balance,
+      fund_name,
+      fixed_months,
+      rate,
+      bonus,
       pit_balance,
       cumulative_spend
     ]
