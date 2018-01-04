@@ -21,18 +21,32 @@ view: looker_sav_isa_dashboard {
     sql: ${pit_balance};;
   }
 
-  measure: sav_pit_bal_cont_dt_term {
+  measure: sav_pit_bal_cont_dt_isa {
     type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${cumulative_spend_term};;
+    sql: ${cumulative_spend_isa};;
   }
 
-  measure: sav_pit_bal_cont_dt_prd {
+  measure: sav_pit_bal_cont_dt_fixed {
     type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${cumulative_spend_prd};;
+    sql: ${cumulative_spend_fixed};;
+  }
+
+  measure: sav_pit_bal_cont_dt_var {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_var};;
+  }
+
+  measure: sav_pit_bal_cont_dt_hold {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_hold};;
   }
 
   measure: avg_balance_per_acc {
@@ -57,11 +71,11 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.ENQUIRY_SOURCE_CHANNEL ;;
   }
 
-  dimension_group: extract_date {
+  dimension_group: extractdate {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
-    sql: ${TABLE}.EXTRACT_DATE ;;
+    sql: ${TABLE}.EXTRACTDATE ;;
   }
 
   dimension_group: application_date {
@@ -90,11 +104,11 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.MEMBER_FLAG ;;
   }
 
-  dimension_group: cont_dt {
+  dimension_group: CALENDAR_DATE {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
-    sql: ${TABLE}.CONT_DT ;;
+    sql: ${TABLE}.CALENDAR_DATE ;;
   }
 
   dimension: transfer_provider_name {
@@ -102,9 +116,9 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.TRANSFER_PROVIDER_NAME ;;
   }
 
-  dimension: fund_name {
+  dimension: product_flag {
     type: string
-    sql: ${TABLE}.FUND_NAME ;;
+    sql: ${TABLE}.PRODUCT_FLAG ;;
   }
 
   dimension: fixed_months {
@@ -134,14 +148,24 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.PIT_BALANCE ;;
   }
 
-  dimension: cumulative_spend_term {
+  dimension: cumulative_spend_isa {
     type: string
-    sql: ${TABLE}.CUMULATIVE_SPEND_TERM ;;
+    sql: ${TABLE}.CUMULATIVE_SPEND_ISA ;;
   }
 
-  dimension: cumulative_spend_prd {
+  dimension: cumulative_spend_var {
     type: string
-    sql: ${TABLE}.CUMULATIVE_SPEND_PRD ;;
+    sql: ${TABLE}.CUMULATIVE_SPEND_VAR ;;
+  }
+
+  dimension: cumulative_spend_fixed {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FIXED ;;
+  }
+
+  dimension: cumulative_spend_hold {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_HOLD ;;
   }
 
   set: detail {
@@ -152,13 +176,15 @@ view: looker_sav_isa_dashboard {
       member_flag,
       balance,
       transfer_provider_name,
-      fund_name,
+      product_flag,
       fixed_months,
       rate,
       bonus,
       pit_balance,
-      cumulative_spend_term,
-      cumulative_spend_prd
+      cumulative_spend_isa,
+      cumulative_spend_var,
+      cumulative_spend_fixed,
+      cumulative_spend_hold
     ]
   }
 }
