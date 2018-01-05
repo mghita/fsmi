@@ -49,12 +49,258 @@ view: looker_sav_isa_dashboard {
     sql: ${cumulative_spend_hold};;
   }
 
+  measure: sav_pit_bal_cont_dt_ea_iss_2 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_2};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_3 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_3};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_4 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_4};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_5 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_5};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_6 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_6};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_7 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_7};;
+  }
+
   measure: sav_pit_bal_cont_dt_ea_iss_8 {
     type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${cumulative_spend_EA_Iss_8};;
   }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_9 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_9};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_10 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_10};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_11 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_11};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_12 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_12};;
+  }
+
+  measure: sav_pit_bal_cont_dt_ea_iss_13 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_13};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_2 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_2};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_3 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_3};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_4 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_4};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_5 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_5};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_6 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_6};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_7 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_7};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_8 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_8};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_9 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_9};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_10 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_10};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_11 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_11};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_12 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_12};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_1yr_iss_13 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_1yr_Iss_13};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_2 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_2};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_3 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_3};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_4 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_4};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_5 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_5};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_6 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_6};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_7 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_7};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_8 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_8};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_9 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_9};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_10 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_10};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_11 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_11};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_12 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_12};;
+  }
+
+  measure: sav_pit_bal_cont_dt_fx_2yr_iss_13 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_FX_2yr_Iss_13};;
+  }
+
 
   measure: avg_balance_per_acc {
     type: number
@@ -250,7 +496,110 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_4 ;;
   }
 
+  dimension: cumulative_spend_FX_1yr_Iss_5 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_5 ;;
+  }
 
+  dimension: cumulative_spend_FX_1yr_Iss_6 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_6 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_7 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_7 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_8 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_8 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_9 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_9 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_10 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_10 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_11 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_11 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_12 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_12 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_13 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_13 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_2 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_2 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_3 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_3 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_4 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_4 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_5 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_5 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_6 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_6 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_7 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_7 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_8 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_8 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_9 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_9 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_10 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_10 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_11 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_11 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_12 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_12 ;;
+  }
+
+  dimension: cumulative_spend_FX_2yr_Iss_13 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_2YR_ISS_13 ;;
+  }
   set: detail {
     fields: [
       account_number,
@@ -282,7 +631,28 @@ view: looker_sav_isa_dashboard {
       cumulative_spend_EA_Iss_13,
       cumulative_spend_FX_1yr_Iss_2,
       cumulative_spend_FX_1yr_Iss_3,
-      cumulative_spend_FX_1yr_Iss_4
+      cumulative_spend_FX_1yr_Iss_4,
+      cumulative_spend_FX_1yr_Iss_5,
+      cumulative_spend_FX_1yr_Iss_6,
+      cumulative_spend_FX_1yr_Iss_7,
+      cumulative_spend_FX_1yr_Iss_8,
+      cumulative_spend_FX_1yr_Iss_9,
+      cumulative_spend_FX_1yr_Iss_10,
+      cumulative_spend_FX_1yr_Iss_11,
+      cumulative_spend_FX_1yr_Iss_12,
+      cumulative_spend_FX_1yr_Iss_13,
+      cumulative_spend_FX_2yr_Iss_2,
+      cumulative_spend_FX_2yr_Iss_3,
+      cumulative_spend_FX_2yr_Iss_4,
+      cumulative_spend_FX_2yr_Iss_5,
+      cumulative_spend_FX_2yr_Iss_6,
+      cumulative_spend_FX_2yr_Iss_7,
+      cumulative_spend_FX_2yr_Iss_8,
+      cumulative_spend_FX_2yr_Iss_9,
+      cumulative_spend_FX_2yr_Iss_10,
+      cumulative_spend_FX_2yr_Iss_11,
+      cumulative_spend_FX_2yr_Iss_12,
+      cumulative_spend_FX_2yr_Iss_13
 
     ]
   }
