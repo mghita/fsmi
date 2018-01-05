@@ -49,6 +49,13 @@ view: looker_sav_isa_dashboard {
     sql: ${cumulative_spend_hold};;
   }
 
+  measure: sav_pit_bal_cont_dt_ea_iss_8 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_EA_Iss_8};;
+  }
+
   measure: avg_balance_per_acc {
     type: number
     drill_fields: [detail*]
@@ -104,7 +111,7 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.MEMBER_FLAG ;;
   }
 
-  dimension_group: CALENDAR_DATE {
+  dimension_group: CALENDAR {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
@@ -168,6 +175,82 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.CUMULATIVE_SPEND_HOLD ;;
   }
 
+  dimension: cumulative_spend_EA_Iss_2 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_2 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_3 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_3 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_4 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_4 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_5 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_5 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_6 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_6 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_7 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_7 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_8 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_8 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_9 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_9 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_10 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_10 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_11 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_11 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_12 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_12 ;;
+  }
+
+  dimension: cumulative_spend_EA_Iss_13 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EA_ISS_13 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_2 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_2 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_3 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_3 ;;
+  }
+
+  dimension: cumulative_spend_FX_1yr_Iss_4 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_FX_1YR_ISS_4 ;;
+  }
+
+
   set: detail {
     fields: [
       account_number,
@@ -184,7 +267,23 @@ view: looker_sav_isa_dashboard {
       cumulative_spend_isa,
       cumulative_spend_var,
       cumulative_spend_fixed,
-      cumulative_spend_hold
+      cumulative_spend_hold,
+      cumulative_spend_EA_Iss_2,
+      cumulative_spend_EA_Iss_3,
+      cumulative_spend_EA_Iss_4,
+      cumulative_spend_EA_Iss_5,
+      cumulative_spend_EA_Iss_6,
+      cumulative_spend_EA_Iss_7,
+      cumulative_spend_EA_Iss_8,
+      cumulative_spend_EA_Iss_9,
+      cumulative_spend_EA_Iss_10,
+      cumulative_spend_EA_Iss_11,
+      cumulative_spend_EA_Iss_12,
+      cumulative_spend_EA_Iss_13,
+      cumulative_spend_FX_1yr_Iss_2,
+      cumulative_spend_FX_1yr_Iss_3,
+      cumulative_spend_FX_1yr_Iss_4
+
     ]
   }
 }
