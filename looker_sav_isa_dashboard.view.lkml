@@ -357,7 +357,7 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.MEMBER_FLAG ;;
   }
 
-  dimension_group: CALENDAR {
+  dimension_group: Contribution {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
