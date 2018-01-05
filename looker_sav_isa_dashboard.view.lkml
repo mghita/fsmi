@@ -7,6 +7,12 @@ view: looker_sav_isa_dashboard {
     sql: ${TABLE}.ACCOUNT_NUMBER ;;
   }
 
+  measure: plan_count {
+    type: count_distinct
+    drill_fields: [detail*]
+    sql: ${TABLE}.PLAN_NUMBER ;;
+  }
+
   measure: sav_balance {
     type: sum
     drill_fields: [detail*]
@@ -309,9 +315,22 @@ view: looker_sav_isa_dashboard {
     sql: ${sav_balance}/NULLIF(${count},0);;
   }
 
+
+  measure: avg_balance_per_plan {
+    type: number
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${sav_balance}/NULLIF(${plan_count},0);;
+  }
+
   dimension: account_number {
     type: string
     sql: ${TABLE}.ACCOUNT_NUMBER ;;
+  }
+
+  dimension: plan_number {
+    type: string
+    sql: ${TABLE}.PLAN_NUMBER ;;
   }
 
   dimension: prod_code {
@@ -603,6 +622,7 @@ view: looker_sav_isa_dashboard {
   set: detail {
     fields: [
       account_number,
+      plan_number,
       prod_code,
       enquiry_source_channel,
       member_flag,
