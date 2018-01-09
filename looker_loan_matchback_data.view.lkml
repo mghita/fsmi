@@ -2,6 +2,20 @@ view: looker_loan_matchback_data {
  sql_table_name: boifs.looker_loan_matchback_data;;
 
 
+  dimension_group: application {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATION_DATE ;;
+  }
+
+  dimension_group: application_decision {
+    type: time
+    timeframes: [date, week, month, year]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATION_DECISION_DATE ;;
+  }
+
   measure: counts {
     type: count
     drill_fields: [detail*]
@@ -141,11 +155,6 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.APPLICATION_NUMBER ;;
   }
 
-  dimension: application_date {
-    type: date
-    sql: ${TABLE}.APPLICATION_DATE ;;
-  }
-
   measure: loan_amount_applied {
     type: number
     sql: ${TABLE}.LOAN_AMOUNT_APPLIED ;;
@@ -157,7 +166,7 @@ view: looker_loan_matchback_data {
   }
 
   dimension: loan_apr {
-    type: string
+    type: number
     sql: ${TABLE}.LOAN_APR ;;
   }
 
@@ -191,11 +200,6 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.APPLICATION_DECISION ;;
   }
 
-  dimension: application_decision_date {
-    type: date
-    sql: ${TABLE}.APPLICATION_DECISION_DATE ;;
-  }
-
   dimension: final_decision {
     type: string
     sql: ${TABLE}.FINAL_DECISION ;;
@@ -207,8 +211,14 @@ view: looker_loan_matchback_data {
   }
 
   dimension: loan_amount_agreed {
-    type: string
+    type: number
     sql: ${TABLE}.LOAN_AMOUNT_AGREED ;;
+  }
+
+  measure: avg_loan_amount_agreed {
+    type: average
+    value_format: "\"£\"#,##0.0,\" K\""
+    sql: ${TABLE}.LOAN_AMOUNT_AGREED;;
   }
 
   dimension: loan_term_agreed {
