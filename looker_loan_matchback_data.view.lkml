@@ -146,8 +146,8 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.APPLICATION_DATE ;;
   }
 
-  dimension: loan_amount_applied {
-    type: string
+  measure: loan_amount_applied {
+    type: number
     sql: ${TABLE}.LOAN_AMOUNT_APPLIED ;;
   }
 
@@ -299,6 +299,18 @@ view: looker_loan_matchback_data {
   measure: complaint {
     type: sum
     sql: case when ${TABLE}.INITIAL_COMPLAINT = 1 or ${TABLE}.FUP_COMPLAINT = 1 then 1 else 0 end;;
+  }
+
+  measure: weighted_avg_APR
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.weighted_APR_final)/sum(${TABLE}.loan_amount_agreed);;
+  }
+
+  measure: weighted_avg_term
+  {type: number
+    value_format: "0.0"
+    sql: sum(${TABLE}.weighted_loan_term_final)/sum(${TABLE}.loan_amount_agreed);;
   }
 
   set: detail {
