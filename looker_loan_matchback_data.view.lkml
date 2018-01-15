@@ -54,6 +54,12 @@ view: looker_loan_matchback_data {
     sql: 100.0*${count_taken_up_apps}/NULLIF(${count_apps},0);;
   }
 
+  measure: pct_takenup_of_all_comms {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${count_taken_up_apps}/NULLIF(${counts},0);;
+  }
+
   measure: pct_takenup_of_accepted_apps {
     type: number
     value_format: "0.00\%"
