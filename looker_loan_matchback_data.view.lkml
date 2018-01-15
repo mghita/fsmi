@@ -176,7 +176,15 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.LOAN_APR ;;
   }
 
-  dimension: loanpurpose {
+  dimension: loan_APR_band
+  {type:tier
+    tiers: [5,10,15,20,25]
+    style:integer
+    sql:loan_APR;;
+    value_format: "0.0\%"
+  }
+
+    dimension: loanpurpose {
     type: string
     sql: ${TABLE}.LOANPURPOSE ;;
   }
