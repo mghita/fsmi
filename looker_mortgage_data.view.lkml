@@ -74,6 +74,12 @@ view: looker_mortgage_data {
     sql: 100*(sum(${TABLE}.blended_rate*${TABLE}.tot_loan_amt)/sum(${TABLE}.tot_loan_amt));;
   }
 
+  measure: margin_measure
+  {type: number
+    value_format: "0.00\%"
+    sql: 100*(sum(${TABLE}.margin*${TABLE}.tot_loan_amt)/sum(${TABLE}.tot_loan_amt));;
+  }
+
   dimension: accnumber {
     type: string
     sql: ${TABLE}.ACCNUMBER ;;
