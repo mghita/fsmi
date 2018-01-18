@@ -98,6 +98,13 @@ view: looker_mortgage_data {
     sql: ${TABLE}.EXTRACTDATE ;;
   }
 
+  dimension_group: sale_dt {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.SALEDATE ;;
+  }
+
   dimension: cancelreason {
     type: string
     sql: ${TABLE}.CANCELREASON ;;
@@ -201,6 +208,24 @@ view: looker_mortgage_data {
     sql: 100.0*${TABLE}.RATE ;;
   }
 
+  dimension: margin {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.MARGIN ;;
+  }
+
+  dimension: swap_year_2 {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.year_2 ;;
+  }
+
+  dimension: swap_year_3 {
+    type: number
+    value_format: "0.00\%"
+    sql: 100.0*${TABLE}.year_3 ;;
+  }
+
   dimension: product_code  {
     type: string
     sql: ${TABLE}.PRODUCTTYPECODE ;;
@@ -236,6 +261,9 @@ view: looker_mortgage_data {
       dt_received_to_today,
       member_flag,
       blended_rate,
+      margin,
+      swap_year_2,
+      swap_year_3,
       product_code,
       tot_loan_amt
     ]
