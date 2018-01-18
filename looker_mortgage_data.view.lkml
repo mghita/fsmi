@@ -104,6 +104,13 @@ view: looker_mortgage_data {
     sql: ${TABLE}.EXTRACTDATE ;;
   }
 
+  dimension_group: app_received_dt {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.APPLICATIONRECEIVEDDATE ;;
+  }
+
   dimension_group: sale_dt {
     type: time
     timeframes: [date, week, month, year, raw]
