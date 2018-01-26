@@ -56,6 +56,69 @@ view: looker_sav_non_isa_dashboard {
     sql: ${cumulative_spend};;
   }
 
+  measure: sav_cumulative_spend_easy_iss_1 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_1};;
+  }
+
+  measure: sav_cumulative_spend_easy_iss_2 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_2};;
+  }
+
+  measure: sav_cumulative_spend_easy_iss_3 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_3};;
+  }
+
+  measure: sav_cumulative_spend_easy_iss_4 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_4};;
+  }
+
+  measure: sav_cumulative_spend_easy_iss_5 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_5};;
+  }
+
+  measure: sav_cumulative_spend_easy_iss_6 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_6};;
+  }
+
+  measure: sav_cumulative_spend_mem_iss_1 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_mem_iss_1};;
+  }
+
+  measure: sav_cumulative_spend_mem_iss_2 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_mem_iss_2};;
+  }
+
+  measure: sav_cumulative_spend_mem_iss_3 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_mem_iss_3};;
+  }
+
   measure: avg_balance_per_acc {
     type: number
     drill_fields: [detail*]
@@ -110,11 +173,11 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.ACTIVATION_DATE ;;
   }
 
-  dimension_group: accounting {
+  dimension_group: calendar {
     type: time
     timeframes: [date, week, month, year, raw]
     convert_tz: no
-    sql: ${TABLE}.ACCOUNTING_DATE ;;
+    sql: ${TABLE}.CALENDAR_DATE ;;
   }
 
   dimension_group: extract {
@@ -169,6 +232,51 @@ view: looker_sav_non_isa_dashboard {
     sql: ${TABLE}.CUMULATIVE_SPEND ;;
   }
 
+  dimension: cumulative_spend_easy_iss_1 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_1 ;;
+  }
+
+  dimension: cumulative_spend_easy_iss_2 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_2 ;;
+  }
+
+  dimension: cumulative_spend_easy_iss_3 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_3 ;;
+  }
+
+  dimension: cumulative_spend_easy_iss_4 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_4 ;;
+  }
+
+  dimension: cumulative_spend_easy_iss_5 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_5 ;;
+  }
+
+  dimension: cumulative_spend_easy_iss_6 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_6 ;;
+  }
+
+  dimension: cumulative_spend_mem_iss_1 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_MEM_ISS_1 ;;
+  }
+
+  dimension: cumulative_spend_mem_iss_2 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_MEM_ISS_2 ;;
+  }
+
+  dimension: cumulative_spend_mem_iss_3 {
+    type: string
+    sql: ${TABLE}.CUMULATIVE_SPEND_MEM_ISS_3 ;;
+  }
+
 
   set: detail {
     fields: [
@@ -186,7 +294,16 @@ view: looker_sav_non_isa_dashboard {
       pit_balance_inflow,
       member_flag,
       new_cust_flag,
-      cumulative_spend
+      cumulative_spend,
+      cumulative_spend_easy_iss_1,
+      cumulative_spend_easy_iss_2,
+      cumulative_spend_easy_iss_3,
+      cumulative_spend_easy_iss_4,
+      cumulative_spend_easy_iss_5,
+      cumulative_spend_easy_iss_6,
+      cumulative_spend_mem_iss_1,
+      cumulative_spend_mem_iss_2,
+      cumulative_spend_mem_iss_3
 
     ]
   }
