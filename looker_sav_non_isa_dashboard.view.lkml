@@ -8,28 +8,28 @@ view: looker_sav_non_isa_dashboard {
   }
 
   measure: sav_balance {
-    type: sum
+    type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${balance};;
   }
 
   measure: sav_balance_outflow {
-    type: sum
+    type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${balance_outflow};;
   }
 
   measure: sav_balance_inflow {
-    type: sum
+    type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${balance_inflow};;
   }
 
   measure: sav_pit_balance {
-    type: sum
+    type: max
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
     sql: ${pit_balance};;
