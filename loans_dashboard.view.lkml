@@ -149,6 +149,15 @@ view:  loans_dashboard
     end ;;
   }
 
+  dimension: referral_pivot  {
+    sql:
+    case
+    when ${application_decision} in ('Refer Accept','Refer','Refer Decline') then '1. Yes'
+    else '2. No'
+
+    end ;;
+  }
+
   dimension: initial_decision
   {sql: ${TABLE}.INITIAL_APPLICATION_DECISION;;}
 
