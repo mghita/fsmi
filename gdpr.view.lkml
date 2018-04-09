@@ -6,6 +6,14 @@ view: gdpr {
     drill_fields: [detail*]
   }
 
+  measure: tot_contacted {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${total_contacted};;
+  }
+
+
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CAMPAIGN_NAME ;;
