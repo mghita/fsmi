@@ -2,98 +2,98 @@ view: gdpr {
   sql_table_name: BOIFS.LOOKER_GDPR_CAMPAIGN ;;
 
   measure: tot_contacted {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${total_contacted};;
   }
 
   measure: tot_opened {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${opened};;
   }
 
   measure: tot_clicked {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${clicked};;
   }
 
   measure: tot_unsubscribed {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${unsubscribed};;
   }
 
   measure: tot_responded {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${responded};;
   }
 
   measure: tot_em_opt_out {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${em_opt_out};;
   }
 
   measure: tot_sms_opt_out {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${sms_opt_out};;
   }
 
   measure: tot_dm_opt_out {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${dm_opt_out};;
   }
 
   measure: tot_phone_opt_out {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${phone_opt_out};;
   }
 
   measure: tot_response_rate {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "0.00\%"
     sql: ${response_rate};;
   }
 
   measure: tot_em_opt_out_rate {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "0.00\%"
     sql: ${em_opt_out_rate};;
   }
 
   measure: tot_sms_opt_out_rate {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "0.00\%"
     sql: ${sms_opt_out_rate};;
   }
 
   measure: tot_dm_opt_out_rate {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "0.00\%"
     sql: ${dm_opt_out_rate};;
   }
 
   measure: tot_phone_opt_out_rate {
-    type: number
+    type: max
     drill_fields: [detail*]
     value_format: "0.00\%"
     sql: ${phone_opt_out_rate};;
