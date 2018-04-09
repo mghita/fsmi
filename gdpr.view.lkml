@@ -7,7 +7,7 @@ view: gdpr {
   }
 
   measure: tot_contacted {
-    type: max
+    type: sum
     drill_fields: [detail*]
     value_format: "#,##0"
     sql: ${total_contacted};;
