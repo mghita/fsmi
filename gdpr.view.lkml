@@ -1,11 +1,6 @@
 view: gdpr {
   sql_table_name: BOIFS.LOOKER_GDPR_CAMPAIGN ;;
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
   measure: tot_contacted {
     type: sum
     drill_fields: [detail*]
@@ -33,6 +28,39 @@ view: gdpr {
     value_format: "#,##0"
     sql: ${unsubscribed};;
   }
+
+  measure: em_opt_outs {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${unsubscribed};;
+    filters: {field:consentforemail value: "N"}
+  }
+
+  measure: sms_opt_outs {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${unsubscribed};;
+    filters: {field:consentforsms value: "N"}
+  }
+
+  measure: dm_opt_outs {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${unsubscribed};;
+    filters: {field:consentforpost value: "N"}
+  }
+
+  measure: phone_opt_outs {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${unsubscribed};;
+    filters: {field:consentforphone value: "N"}
+  }
+
 
   dimension: campaign_name {
     type: string
