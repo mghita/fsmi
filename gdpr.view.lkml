@@ -67,36 +67,36 @@ view: gdpr {
   measure: tot_response_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "0.000\%"
-    sql: ${response_rate};;
+    value_format: "0.00\%"
+    sql: 100*(${response_rate});;
   }
 
   measure: tot_em_opt_out_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "0.000\%"
-    sql: ${em_opt_out_rate};;
+    value_format: "0.00\%"
+    sql: 100*(${em_opt_out_rate});;
   }
 
   measure: tot_sms_opt_out_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "0.000\%"
-    sql: ${sms_opt_out_rate};;
+    value_format: "0.00\%"
+    sql: 100*(${sms_opt_out_rate});;
   }
 
   measure: tot_dm_opt_out_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "0.000\%"
-    sql: ${dm_opt_out_rate};;
+    value_format: "0.00\%"
+    sql: 100*(${dm_opt_out_rate});;
   }
 
   measure: tot_phone_opt_out_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "0.000\%"
-    sql: ${phone_opt_out_rate};;
+    value_format: "0.00\%"
+    sql: 100*(${phone_opt_out_rate});;
   }
 
   dimension: campaign_name {
