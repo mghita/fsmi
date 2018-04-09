@@ -29,62 +29,79 @@ view: gdpr {
     sql: ${unsubscribed};;
   }
 
-  measure: em_opt_outs {
+  measure: tot_responded {
     type: sum
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${unsubscribed};;
-    filters: {field:consentforemail value: "N"}
+    sql: ${responded};;
   }
 
-  measure: sms_opt_outs {
-    type: sum
+  measure: tot_em_opt_out {
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${unsubscribed};;
-    filters: {field:consentforsms value: "N"}
+    sql: ${em_opt_out};;
   }
 
-  measure: dm_opt_outs {
-    type: sum
+  measure: tot_sms_opt_out {
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${unsubscribed};;
-    filters: {field:consentforpost value: "N"}
+    sql: ${sms_opt_out};;
   }
 
-  measure: phone_opt_outs {
-    type: sum
+  measure: tot_dm_opt_out {
+    type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${unsubscribed};;
-    filters: {field:consentforphone value: "N"}
+    sql: ${dm_opt_out};;
   }
 
+  measure: tot_phone_opt_out {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${phone_opt_out};;
+  }
+
+  measure: tot_response_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${response_rate};;
+  }
+
+  measure: tot_em_opt_out_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${em_opt_out_rate};;
+  }
+
+  measure: tot_sms_opt_out_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${sms_opt_out_rate};;
+  }
+
+  measure: tot_dm_opt_out_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${dm_opt_out_rate};;
+  }
+
+  measure: tot_phone_opt_out_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${phone_opt_out_rate};;
+  }
 
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CAMPAIGN_NAME ;;
-  }
-
-  dimension: consentforemail {
-    type: string
-    sql: ${TABLE}.CONSENTFOREMAIL ;;
-  }
-
-  dimension: consentforsms {
-    type: string
-    sql: ${TABLE}.CONSENTFORSMS ;;
-  }
-
-  dimension: consentforphone {
-    type: string
-    sql: ${TABLE}.CONSENTFORPHONE ;;
-  }
-
-  dimension: consentforpost {
-    type: string
-    sql: ${TABLE}.CONSENTFORPOST ;;
   }
 
   dimension: total_contacted {
@@ -107,17 +124,97 @@ view: gdpr {
     sql: ${TABLE}.UNSUBSCRIBED ;;
   }
 
+  dimension: responded {
+    type: string
+    sql: ${TABLE}.responded ;;
+  }
+
+  dimension: em_opt_out {
+    type: string
+    sql: ${TABLE}.em_opt_out ;;
+  }
+
+  dimension: sms_opt_out {
+    type: string
+    sql: ${TABLE}.sms_opt_out ;;
+  }
+
+  dimension: dm_opt_out {
+    type: string
+    sql: ${TABLE}.dm_opt_out ;;
+  }
+
+  dimension: phone_opt_out {
+    type: string
+    sql: ${TABLE}.phone_opt_out ;;
+  }
+
+  dimension: em_remained {
+    type: string
+    sql: ${TABLE}.em_remained ;;
+  }
+
+  dimension: sms_remained {
+    type: string
+    sql: ${TABLE}.sms_remained ;;
+  }
+
+  dimension: dm_remained {
+    type: string
+    sql: ${TABLE}.dm_remained ;;
+  }
+
+  dimension: phone_remained {
+    type: string
+    sql: ${TABLE}.phone_remained ;;
+  }
+
+  dimension: response_rate {
+    type: string
+    sql: ${TABLE}.response_rate ;;
+  }
+
+  dimension: em_opt_out_rate {
+    type: string
+    sql: ${TABLE}.em_opt_out_rate ;;
+  }
+
+  dimension: sms_opt_out_rate {
+    type: string
+    sql: ${TABLE}.sms_opt_out_rate ;;
+  }
+
+  dimension: dm_opt_out_rate {
+    type: string
+    sql: ${TABLE}.dm_opt_out_rate ;;
+  }
+
+  dimension: phone_opt_out_rate {
+    type: string
+    sql: ${TABLE}.phone_opt_out_rate ;;
+  }
   set: detail {
     fields: [
       campaign_name,
-      consentforemail,
-      consentforsms,
-      consentforphone,
-      consentforpost,
       total_contacted,
       opened,
       clicked,
-      unsubscribed
+      unsubscribed,
+      responded,
+      em_opt_out,
+      sms_opt_out,
+      dm_opt_out,
+      phone_opt_out,
+      em_remained,
+      sms_remained,
+      dm_remained,
+      phone_remained,
+      response_rate,
+      em_opt_out_rate,
+      sms_opt_out_rate,
+      dm_opt_out_rate,
+      phone_opt_out_rate
+
     ]
   }
 }
