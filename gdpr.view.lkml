@@ -13,6 +13,26 @@ view: gdpr {
     sql: ${total_contacted};;
   }
 
+  measure: tot_opened {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${opened};;
+  }
+
+  measure: tot_clicked {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${clicked};;
+  }
+
+  measure: tot_unsubscribed {
+    type: sum
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${unsubscribed};;
+  }
 
   dimension: campaign_name {
     type: string
