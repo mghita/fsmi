@@ -102,28 +102,28 @@ view: gdpr {
   measure: em_response_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "#,##0"
+    value_format: "0.00\%"
     sql: ${em_opt_out}/nullif(${responded},0);;
     }
 
   measure: sms_response_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "#,##0"
+    value_format: "0.00\%"
     sql: ${sms_opt_out}/nullif(${responded},0);;
   }
 
   measure: dm_response_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "#,##0"
+    value_format: "0.00\%"
     sql: ${dm_opt_out}/nullif(${responded},0);;
   }
 
   measure: phone_response_rate {
     type: max
     drill_fields: [detail*]
-    value_format: "#,##0"
+    value_format: "0.00\%"
     sql: ${phone_opt_out}/nullif(${responded},0);;
   }
 
