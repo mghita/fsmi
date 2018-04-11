@@ -99,6 +99,34 @@ view: gdpr {
     sql: 100*(${phone_opt_out_rate});;
   }
 
+  measure: em_response_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${em_opt_out}/${responded};;
+    }
+
+  measure: sms_response_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${sms_opt_out}/${responded};;
+  }
+
+  measure: dm_response_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${dm_opt_out}/${responded};;
+  }
+
+  measure: phone_response_rate {
+    type: max
+    drill_fields: [detail*]
+    value_format: "#,##0"
+    sql: ${phone_opt_out}/${responded};;
+  }
+
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CAMPAIGN_NAME ;;
