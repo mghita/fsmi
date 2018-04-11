@@ -103,28 +103,28 @@ view: gdpr {
     type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${em_opt_out}/${responded};;
+    sql: ${em_opt_out}/nullif(${responded},0);;
     }
 
   measure: sms_response_rate {
     type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${sms_opt_out}/${responded};;
+    sql: ${sms_opt_out}/nullif(${responded},0);;
   }
 
   measure: dm_response_rate {
     type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${dm_opt_out}/${responded};;
+    sql: ${dm_opt_out}/nullif(${responded},0);;
   }
 
   measure: phone_response_rate {
     type: max
     drill_fields: [detail*]
     value_format: "#,##0"
-    sql: ${phone_opt_out}/${responded};;
+    sql: ${phone_opt_out}/nullif(${responded},0);;
   }
 
   dimension: campaign_name {
