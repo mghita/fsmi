@@ -95,3 +95,4 @@ explore: looker_mortgage_data {}
 explore: looker_sav_non_isa_dashboard {}
 explore: looker_sav_isa_dashboard {}
 explore: gdpr {}
+explore: clara_test {}
