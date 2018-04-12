@@ -21,6 +21,10 @@ view:  loans_dashboard
   {type: string
     sql: ${TABLE}.loanpurpose;;}
 
+  dimension: product_code
+  {type: string
+    sql:${TABLE}.product_code;;}
+
   dimension: product_name
   {type: string
     sql:${TABLE}.product_name;;}
