@@ -203,6 +203,9 @@ view:  loans_dashboard
     full_suggestions: yes
   }
 
+  dimension: member_flag
+  {sql: ${TABLE}.member_flag;;}
+
   measure: counts {
     type: count_distinct
     drill_fields: [src_group, channel_src, counts]
