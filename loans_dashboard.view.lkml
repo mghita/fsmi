@@ -300,6 +300,12 @@ view:  loans_dashboard
     sql: ${loan_amount_agreed};;
   }
 
+  measure: total_amount_test {
+    type: sum
+    drill_fields: [src_group, channel_src, total_amount]
+    sql: ${loan_amount_agreed};;
+  }
+
     measure: total_amount_applied {
     type: sum
     value_format:  "\"£\"#,##0,\" K\""
