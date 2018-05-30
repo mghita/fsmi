@@ -13,6 +13,16 @@ view: looker_sav_non_isa_profile {
     sql: ${TABLE}.FS_PRODUCT ;;
   }
 
+  dimension: channel {
+    type: string
+    sql: ${TABLE}.CHANNEL ;;
+  }
+
+  dimension: channel_source {
+    type: string
+    sql: ${TABLE}.CHANNEL_SOURCE ;;
+  }
+
   dimension: age {
     type: string
     sql: ${TABLE}.AGE ;;
@@ -56,6 +66,8 @@ view: looker_sav_non_isa_profile {
   set: detail {
     fields: [
       fs_product,
+      channel,
+      channel_source,
       age,
       aa_segment,
       gender,
