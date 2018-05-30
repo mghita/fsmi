@@ -8,11 +8,6 @@ view: looker_sav_non_isa_profile {
     sql: ${customer_count} ;;
   }
 
-  dimension: sav_product {
-    type: string
-    sql: ${TABLE}.SAV_PRODUCT ;;
-  }
-
   dimension: age {
     type: string
     sql: ${TABLE}.AGE ;;
@@ -55,7 +50,6 @@ view: looker_sav_non_isa_profile {
 
   set: detail {
     fields: [
-      sav_product,
       age,
       aa_segment,
       gender,
