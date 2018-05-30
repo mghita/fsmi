@@ -3,8 +3,9 @@ view: looker_sav_non_isa_profile {
       ;;
 
   measure: cust_count {
-    type: max
+    type: sum
     drill_fields: [detail*]
+    sql: ${customer_count} ;;
   }
 
   dimension: sav_product {
