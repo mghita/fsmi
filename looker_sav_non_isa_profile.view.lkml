@@ -8,6 +8,12 @@ view: looker_sav_non_isa_profile {
     sql: ${customer_count} ;;
   }
 
+  measure: Member_cust_count {
+    type: sum
+    drill_fields: [detail*]
+    sql: case when ${fs_product} = 'AA Member Base' then ${customer_count} else end;;
+  }
+
   dimension: fs_product {
     type: string
     sql: ${TABLE}.FS_PRODUCT ;;
