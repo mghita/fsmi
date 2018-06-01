@@ -96,4 +96,4 @@ explore: looker_sav_non_isa_dashboard {}
 explore: looker_sav_isa_dashboard {}
 explore: gdpr {}
 explore: clara_test {}
-explore: looker_sav_non_isa_profile {}
+explore: looker_profile {}
