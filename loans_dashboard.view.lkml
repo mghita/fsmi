@@ -168,23 +168,25 @@ view:  loans_dashboard
   dimension: final_decision
   {sql: ${TABLE}.FINAL_DECISION;;}
 
+  # case when ${TABLE}.source_code is null then 'SEO & Direct'
+
   dimension: channel_src
   {type: string
     sql:
-    case when ${TABLE}.source_code is null then 'SEO & Direct'
+    case when ${TABLE}.source_code is null then 'SEO and Direct'
       when source like 'RP-%' then 'RunPath'
       when source like 'OP-%' then 'Optimise'
-      when medium is null then 'Unknown'
+      when medium is null then 'Review ITO'
       else ${looker_ITOs_source_codes.source}
     end;;
     full_suggestions: yes
   }
 
   dimension: channel_src_explicit {
-    type: string
+      type: string
     sql:
     case when ${TABLE}.source_code is null then 'Natural Search'
-      when medium is null then 'Unknown'
+      when medium is null then 'Review ITO'
       else ${looker_ITOs_source_codes.source}
     end;;
     full_suggestions: yes
@@ -192,7 +194,7 @@ view:  loans_dashboard
 
   dimension: src_group
   {type: string
-    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
+    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO and Direct');;
     full_suggestions: yes
   }
 
