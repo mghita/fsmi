@@ -9,6 +9,7 @@ view: looker_sav_isa_dashboard {
 
   measure: plan_count {
     type: count_distinct
+    hidden: yes
     drill_fields: [detail*]
     sql: ${TABLE}.PLAN_NUMBER ;;
   }
