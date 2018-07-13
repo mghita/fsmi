@@ -84,3 +84,5 @@ explore: looker_sav_non_isa_dashboard {}
 explore: looker_sav_isa_dashboard {}
 explore: gdpr {}
 explore: looker_profile {}
+explore: sav_nisa_matchback {}
+explore: sav_isa_matchback {}
