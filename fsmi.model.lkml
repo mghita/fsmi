@@ -86,3 +86,4 @@ explore: gdpr {}
 explore: looker_profile {}
 explore: sav_nisa_matchback {}
 explore: sav_isa_matchback {}
+explore: finance_mth_end {}
