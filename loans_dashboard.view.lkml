@@ -222,6 +222,12 @@ view:  loans_dashboard
     filters: {field:application_week value: "before 0 days ago"}
   }
 
+  measure: count_declined_apps {
+    type: count
+    drill_fields: [src_group, channel_src, count_declined_apps]
+    filters: {field:application_decision value: "%Decline%"}
+  }
+
   measure: count_accepted_apps {
     type: count
     drill_fields: [src_group, channel_src, count_accepted_apps]
@@ -302,6 +308,13 @@ view:  loans_dashboard
     sql: ${loan_amount_agreed};;
   }
 
+  measure: total_amount_written {
+    type: sum
+    value_format:  "\"£\"#,##0,\" K\""
+    drill_fields: [src_group, channel_src, total_amount]
+    filters: {field:final_decision value: "Taken Up"}
+    sql: ${loan_amount_agreed};;
+  }
 
     measure: total_amount_applied {
     type: sum
