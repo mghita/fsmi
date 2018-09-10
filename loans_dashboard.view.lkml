@@ -310,7 +310,7 @@ view:  loans_dashboard
 
   measure: total_amount_written {
     type: sum
-    value_format:  "\"£\"#,##0,\" K\""
+    # value_format:  "\"£\"#,##0,\" K\""
     drill_fields: [src_group, channel_src, total_amount]
     filters: {field:final_decision value: "Taken Up"}
     sql: ${loan_amount_agreed};;
