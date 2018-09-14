@@ -160,6 +160,14 @@ view: sav_new_non_isa_dashboard {
       sql: ${TABLE}.ACTIVATION_DATE ;;
     }
 
+
+  dimension_group: accounting {
+    type: time
+    timeframes: [date, week, month, year, raw]
+    convert_tz: no
+    sql: ${TABLE}.ACCOUNTING_DATE ;;
+  }
+
     dimension_group: calendar {
       type: time
       timeframes: [date, week, month, year, raw]
@@ -281,6 +289,7 @@ view: sav_new_non_isa_dashboard {
       balance_group,
       ito_code,
       activation_date,
+      accounting_date,
       calendar_date,
       balance,
       balance_outflow,
