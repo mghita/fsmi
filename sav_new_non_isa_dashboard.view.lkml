@@ -18,7 +18,7 @@ view: sav_new_non_isa_dashboard {
     type: sum
     drill_fields: [detail*]
     value_format:  "\"£\"#,##0,\" K\""
-    sql: ${balance_outflow};;
+    sql: ${balance_outflow}*-1;;
   }
 
   measure: sav_balance_inflow {
