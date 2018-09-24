@@ -84,7 +84,14 @@ view: sav_new_non_isa_dashboard {
       sql: ${cumulative_spend_easy_iss_7};;
     }
 
-    measure: sav_cumulative_spend_mem_iss_1 {
+  measure: sav_cumulative_spend_easy_iss_8 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_easy_iss_8};;
+  }
+
+  measure: sav_cumulative_spend_mem_iss_1 {
       type: max
       drill_fields: [detail*]
       value_format:  "\"£\"#,##0,\" K\""
@@ -105,7 +112,14 @@ view: sav_new_non_isa_dashboard {
       sql: ${cumulative_spend_mem_iss_3};;
     }
 
-    measure: avg_balance_per_acc {
+  measure: sav_cumulative_spend_mem_iss_4 {
+    type: max
+    drill_fields: [detail*]
+    value_format:  "\"£\"#,##0,\" K\""
+    sql: ${cumulative_spend_mem_iss_4};;
+  }
+
+  measure: avg_balance_per_acc {
       type: number
       drill_fields: [detail*]
       value_format:  "\"£\"#,##0,\" K\""
@@ -242,6 +256,12 @@ view: sav_new_non_isa_dashboard {
     sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_7 ;;
   }
 
+  dimension: cumulative_spend_easy_iss_8 {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.CUMULATIVE_SPEND_EASY_ISS_8 ;;
+  }
+
   dimension: cumulative_spend_mem_iss_1 {
     type: string
     hidden: yes
@@ -258,6 +278,12 @@ view: sav_new_non_isa_dashboard {
     type: string
     hidden: yes
     sql: ${TABLE}.CUMULATIVE_SPEND_MEM_ISS_3 ;;
+  }
+
+  dimension: cumulative_spend_mem_iss_4 {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.CUMULATIVE_SPEND_MEM_ISS_4 ;;
   }
 
   dimension: pit_balance {
@@ -302,9 +328,11 @@ view: sav_new_non_isa_dashboard {
       cumulative_spend_easy_iss_5,
       cumulative_spend_easy_iss_6,
       cumulative_spend_easy_iss_7,
+      cumulative_spend_easy_iss_8,
       cumulative_spend_mem_iss_1,
       cumulative_spend_mem_iss_2,
       cumulative_spend_mem_iss_3,
+      cumulative_spend_mem_iss_4,
       pit_balance,
       pit_balance_outflow,
       pit_balance_inflow
