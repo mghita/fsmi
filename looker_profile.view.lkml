@@ -44,6 +44,12 @@ view: looker_profile {
     sql: ${member_tenure_count} ;;
   }
 
+  measure: member_dfm_count_final {
+    type: max
+    drill_fields: [detail*]
+    sql: ${member_dfm_count} ;;
+  }
+
   dimension: fs_product {
     type: string
     sql: ${TABLE}.FS_PRODUCT ;;
@@ -94,6 +100,11 @@ view: looker_profile {
     sql: ${TABLE}.MEMBER_STATUS ;;
   }
 
+  dimension: dfm_score {
+    type: string
+    sql: ${TABLE}.dfm_score ;;
+  }
+
   dimension: customer_count {
     hidden: yes
     type: string
@@ -136,6 +147,11 @@ view: looker_profile {
     sql: ${TABLE}.member_tenure_count ;;
   }
 
+  dimension: member_dfm_count {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.member_dfm_count ;;
+  }
 
   set: detail {
     fields: [
@@ -149,13 +165,15 @@ view: looker_profile {
       exp_fss_group,
       tenure,
       member_status,
+      dfm_score,
       customer_count,
       member_age_count,
       member_segment_count,
       member_gender_count,
       member_region_count,
       member_fss_count,
-      member_tenure_count
+      member_tenure_count,
+      member_dfm_count
     ]
   }
 }
