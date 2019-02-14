@@ -88,3 +88,4 @@ explore: sav_nisa_matchback {}
 explore: sav_isa_matchback {}
 explore: finance_mth_end {}
 explore: sav_new_non_isa_dashboard {}
+explore: gdpr_dm_test {}

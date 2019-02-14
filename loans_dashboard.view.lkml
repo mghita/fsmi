@@ -194,7 +194,8 @@ view:  loans_dashboard
 
   dimension: src_group
   {type: string
-    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
+    sql: ${looker_ITOs_source_codes.medium});;
+    # sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
     full_suggestions: yes
   }
 
@@ -226,6 +227,12 @@ view:  loans_dashboard
     type: count
     drill_fields: [src_group, channel_src, count_declined_apps]
     filters: {field:application_decision value: "%Decline%"}
+  }
+
+  measure: count_refer_apps {
+    type: count
+    drill_fields: [src_group, channel_src, count_declined_apps]
+    filters: {field:application_decision value: "Refer"}
   }
 
   measure: count_accepted_apps {

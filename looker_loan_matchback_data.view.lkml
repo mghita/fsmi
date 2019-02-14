@@ -131,6 +131,7 @@ view: looker_loan_matchback_data {
     sql: ${TABLE}.TREATMENT_CELL_CODE ;;
   }
 
+
   dimension: fallow_flag {
     type: string
     sql: ${TABLE}.FALLOW_FLAG ;;
@@ -337,6 +338,12 @@ view: looker_loan_matchback_data {
     sql: sum(${TABLE}.weighted_loan_term_final)/sum(${TABLE}.loan_amount_agreed);;
   }
 
+  dimension: creative_code {
+    type: string
+    sql: ${TABLE}.creative_code ;;
+  }
+
+
   set: detail {
     fields: [
       campaign_code,
@@ -366,7 +373,8 @@ view: looker_loan_matchback_data {
       weighted_loan_term_application,
       weighted_loan_term_final,
       medium,
-      source
+      source,
+      creative_code
     ]
   }
 }
