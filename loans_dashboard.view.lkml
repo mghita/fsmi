@@ -194,8 +194,8 @@ view:  loans_dashboard
 
   dimension: src_group
   {type: string
-    sql: ${looker_ITOs_source_codes.medium});;
-    # sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
+    # sql: ${looker_ITOs_source_codes.medium});;
+    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
     full_suggestions: yes
   }
 
