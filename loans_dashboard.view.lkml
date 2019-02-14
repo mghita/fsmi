@@ -195,7 +195,13 @@ view:  loans_dashboard
   dimension: src_group
   {type: string
     # sql: ${looker_ITOs_source_codes.medium});;
-    sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
+    sql:
+    case when ${TABLE}.source_code is null then 'SEO & Direct'
+    when medium is null then 'Review ITO'
+    else ${looker_ITOs_source_codes.medium}
+    end;;
+
+    # sql: coalesce(${looker_ITOs_source_codes.medium}, 'SEO & Direct');;
     full_suggestions: yes
   }
 
