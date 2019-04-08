@@ -29,6 +29,10 @@ view:  loans_dashboard
   {type: string
     sql:${TABLE}.product_name;;}
 
+  dimension: employment_status
+  {type: string
+    sql:${TABLE}.employment_status;;}
+
   dimension: loan_amount_applied
   {type: number
     sql: ${TABLE}.loan_amount_applied;;}
