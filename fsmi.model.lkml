@@ -1,5 +1,5 @@
 connection: "pchaa03"
-week_start_day: monday
+week_start_day: sunday
 # week_start_day: saturday
 
 
