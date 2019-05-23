@@ -156,6 +156,11 @@ view: sav_new_non_isa_dashboard {
     sql: ${TABLE}.ACCOUNT_STATUS ;;
   }
 
+  dimension: member_flag {
+    type: string
+    sql: ${TABLE}.MEMBER_FLAG ;;
+  }
+
   dimension: balance_group {
     type: string
     sql: ${TABLE}.BALANCE_GROUP ;;
@@ -317,6 +322,7 @@ view: sav_new_non_isa_dashboard {
       activation_date,
       accounting_date,
       calendar_date,
+      member_flag,
       balance,
       balance_outflow,
       balance_inflow,
