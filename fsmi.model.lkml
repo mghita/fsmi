@@ -25,6 +25,8 @@ explore: looker_loan_matchback_data {}
 
 explore: looker_loan_mlp_data {}
 
+explore: mb_channel_apps {}
+
 explore: loans_dashboard{
   join: looker_ITOs_source_codes
   {
